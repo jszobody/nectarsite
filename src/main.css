@@ -1,17 +1,18 @@
 @import "tailwindcss";
 
-/* Brand tokens for Nectar. Tweak here once during design.
-   Orange comes from the "blueprint sheet" logo; ink is the slate-gray base. */
+/* Brand tokens for Nectar, sampled from the honeycomb logo:
+   orange→gold gradient (#FF8000 → #FFCC00) and the slate "ink" (#435363). */
 @theme {
-  --color-nectar-50: #fff7ed;
-  --color-nectar-100: #ffedd5;
-  --color-nectar-200: #fed7aa;
-  --color-nectar-300: #fdba74;
-  --color-nectar-400: #fb923c;
-  --color-nectar-500: #f97316;
-  --color-nectar-600: #ea580c;
-  --color-nectar-700: #c2410c;
-  --color-ink-700: #3b4a59;
-  --color-ink-800: #2f3b47;
+  --color-nectar-50: #fff8eb;
+  --color-nectar-100: #ffedcc;
+  --color-nectar-200: #ffd98a;
+  --color-nectar-300: #ffcc00;  /* gold gradient stop */
+  --color-nectar-400: #ffa31f;
+  --color-nectar-500: #ff8900;
+  --color-nectar-600: #ff8000;  /* orange gradient stop */
+  --color-nectar-700: #d96a00;
+  --color-ink-600: #54657a;
+  --color-ink-700: #435363;     /* logo slate */
+  --color-ink-800: #36434f;
   --color-ink-900: #232c35;
 }
