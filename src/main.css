@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/* Brand tokens for Nectar. Tweak here once during design.
+   Orange comes from the "blueprint sheet" logo; ink is the slate-gray base. */
+@theme {
+  --color-nectar-50: #fff7ed;
+  --color-nectar-100: #ffedd5;
+  --color-nectar-200: #fed7aa;
+  --color-nectar-300: #fdba74;
+  --color-nectar-400: #fb923c;
+  --color-nectar-500: #f97316;
+  --color-nectar-600: #ea580c;
+  --color-nectar-700: #c2410c;
+  --color-ink-700: #3b4a59;
+  --color-ink-800: #2f3b47;
+  --color-ink-900: #232c35;
+}
