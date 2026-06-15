@@ -1,79 +1,84 @@
-<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M30 98.5H130H170V148.15C170 149.807 168.657 151.15 167 151.15H33C31.3431 151.15 30 149.807 30 148.15V98.5Z" fill="#051A2F" fill-opacity="0.75"/>
-<g filter="url(#filter0_di_1233_2)">
-<path d="M30 47.85C30 46.7454 30.8954 45.85 32 45.85H155.214C156.007 45.85 156.767 46.1637 157.329 46.7226L169.115 58.4414C169.682 59.0045 170 59.7701 170 60.5688V101.425H30V47.85Z" fill="url(#paint0_radial_1233_2)"/>
-<path d="M32 46.35H155.214C155.874 46.35 156.508 46.6118 156.977 47.0775L168.763 58.7963C169.235 59.2655 169.5 59.9033 169.5 60.5688V100.925H30.5V47.85C30.5 47.0216 31.1716 46.35 32 46.35Z" stroke="url(#paint1_radial_1233_2)"/>
+<svg width="200" height="117" viewBox="0 0 200 117" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1369_282)">
+<path d="M30 58.5H130H170V108.15C170 109.807 168.657 111.15 167 111.15H33C31.3431 111.15 30 109.807 30 108.15V58.5Z" fill="#4B5D6E" fill-opacity="0.75"/>
+<g filter="url(#filter0_di_1369_282)">
+<path d="M30 7.85001C30 6.74544 30.8954 5.85001 32 5.85001H155.214C156.007 5.85001 156.767 6.16373 157.329 6.72263L169.115 18.4414C169.682 19.0045 170 19.7701 170 20.5688V61.425H30V7.85001Z" fill="url(#paint0_radial_1369_282)"/>
+<path d="M32 6.35001H155.214C155.874 6.35001 156.508 6.61179 156.977 7.07755L168.763 18.7963C169.235 19.2655 169.5 19.9033 169.5 20.5688V60.9252H30.5V7.85001C30.5 7.02158 31.1716 6.35001 32 6.35001Z" stroke="url(#paint1_radial_1369_282)"/>
 </g>
-<rect y="101.5" width="200" height="2.925" rx="1" fill="url(#paint2_linear_1233_2)"/>
-<rect x="31" y="93" width="138" height="8" fill="url(#paint3_linear_1233_2)" fill-opacity="0.4"/>
-<line x1="48.25" y1="105" x2="48.25" y2="140" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<line x1="85.25" y1="105" x2="85.25" y2="123.5" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<line x1="85.25" y1="131" x2="85.25" y2="138" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<path d="M49.25 115V138.751" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<line x1="114.25" y1="105" x2="114.25" y2="140" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<line x1="153.25" y1="105" x2="153.25" y2="125" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<line x1="154.25" y1="105" x2="154.25" y2="125" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<line x1="48" y1="139.75" x2="114" y2="139.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<line x1="49" y1="138.75" x2="114" y2="138.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<line x1="49" y1="114.75" x2="95" y2="114.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<line x1="114" y1="124.75" x2="154" y2="124.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<line x1="103" y1="114.75" x2="114" y2="114.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<line x1="48" y1="113.75" x2="95" y2="113.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<line x1="103" y1="113.75" x2="114" y2="113.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<line x1="95.25" y1="113.5" x2="95.25" y2="120.5" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<line x1="103.25" y1="114" x2="103.25" y2="115" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<line x1="48" y1="107.75" x2="82" y2="107.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5" stroke-dasharray="1 1"/>
-<line x1="114" y1="122.75" x2="153" y2="122.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5" stroke-dasharray="1 1"/>
-<line x1="81.75" y1="124" x2="81.75" y2="108" stroke="white" stroke-opacity="0.75" stroke-width="0.5" stroke-dasharray="1 1"/>
-<line x1="53.75" y1="137.999" x2="53.8306" y2="114.999" stroke="white" stroke-opacity="0.75" stroke-width="0.5" stroke-dasharray="1 1"/>
-<mask id="mask0_1233_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="88" y="105" width="16" height="16">
-<path d="M95.75 105.25C99.8847 105.25 103.25 108.712 103.25 113C103.25 117.288 99.8847 120.75 95.75 120.75C91.6153 120.75 88.25 117.288 88.25 113C88.25 108.712 91.6153 105.25 95.75 105.25Z" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<rect y="61.5" width="200" height="2.925" rx="1" fill="url(#paint2_linear_1369_282)"/>
+<rect x="31" y="53" width="138" height="8" fill="url(#paint3_linear_1369_282)" fill-opacity="0.4"/>
+<line x1="48.25" y1="65" x2="48.25" y2="100" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line x1="85.25" y1="65" x2="85.25" y2="83.5" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line x1="85.25" y1="91" x2="85.25" y2="98" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<path d="M49.25 75V98.7512" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line x1="114.25" y1="65" x2="114.25" y2="100" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line x1="153.25" y1="65" x2="153.25" y2="85" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line x1="154.25" y1="65" x2="154.25" y2="85" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line x1="48" y1="99.75" x2="114" y2="99.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line x1="49" y1="98.75" x2="114" y2="98.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line x1="49" y1="74.75" x2="95" y2="74.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line x1="114" y1="84.75" x2="154" y2="84.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line x1="103" y1="74.75" x2="114" y2="74.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line x1="48" y1="73.75" x2="95" y2="73.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line x1="103" y1="73.75" x2="114" y2="73.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line x1="95.25" y1="73.5" x2="95.25" y2="80.5" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line x1="103.25" y1="74" x2="103.25" y2="75" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line x1="48" y1="67.75" x2="82" y2="67.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5" stroke-dasharray="1 1"/>
+<line x1="114" y1="82.75" x2="153" y2="82.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5" stroke-dasharray="1 1"/>
+<line x1="81.75" y1="84" x2="81.75" y2="68" stroke="white" stroke-opacity="0.75" stroke-width="0.5" stroke-dasharray="1 1"/>
+<line x1="53.75" y1="97.9991" x2="53.8306" y2="74.9991" stroke="white" stroke-opacity="0.75" stroke-width="0.5" stroke-dasharray="1 1"/>
+<mask id="mask0_1369_282" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="88" y="65" width="16" height="16">
+<path d="M95.75 65.25C99.8847 65.25 103.25 68.7123 103.25 73C103.25 77.2877 99.8847 80.75 95.75 80.75C91.6153 80.75 88.25 77.2877 88.25 73C88.25 68.7123 91.6153 65.25 95.75 65.25Z" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
 </mask>
-<g mask="url(#mask0_1233_2)">
-<rect x="95" y="114" width="9" height="10" fill="white"/>
+<g mask="url(#mask0_1369_282)">
+<rect x="95" y="74" width="9" height="10" fill="white"/>
 </g>
-<line y1="-0.25" x2="8" y2="-0.25" transform="matrix(-1 0 0 1 85 131.5)" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
-<mask id="mask1_1233_2" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="77" y="123" width="16" height="16">
-<path d="M92.75 130.75C92.75 126.615 89.2877 123.25 85 123.25C80.7123 123.25 77.25 126.615 77.25 130.75C77.25 134.885 80.7123 138.25 85 138.25C89.2877 138.25 92.75 134.885 92.75 130.75Z" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<line y1="-0.25" x2="8" y2="-0.25" transform="matrix(-1 0 0 1 85 91.5)" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
+<mask id="mask1_1369_282" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="77" y="83" width="16" height="16">
+<path d="M92.75 90.75C92.75 86.6153 89.2877 83.25 85 83.25C80.7123 83.25 77.25 86.6153 77.25 90.75C77.25 94.8847 80.7123 98.25 85 98.25C89.2877 98.25 92.75 94.8847 92.75 90.75Z" stroke="white" stroke-opacity="0.75" stroke-width="0.5"/>
 </mask>
-<g mask="url(#mask1_1233_2)">
-<rect width="8" height="10" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 85 131)" fill="white"/>
+<g mask="url(#mask1_1369_282)">
+<rect width="8" height="10" transform="matrix(4.37114e-08 -1 -1 -4.37114e-08 85 91)" fill="white"/>
 </g>
-<line x1="82" y1="133.75" x2="114" y2="133.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5" stroke-dasharray="1 1"/>
-<line x1="81.75" y1="138" x2="81.75" y2="132" stroke="white" stroke-opacity="0.75" stroke-width="0.5" stroke-dasharray="1 1"/>
+<line x1="82" y1="93.75" x2="114" y2="93.75" stroke="white" stroke-opacity="0.75" stroke-width="0.5" stroke-dasharray="1 1"/>
+<line x1="81.75" y1="98" x2="81.75" y2="92" stroke="white" stroke-opacity="0.75" stroke-width="0.5" stroke-dasharray="1 1"/>
+</g>
 <defs>
-<filter id="filter0_di_1233_2" x="26" y="42.85" width="148" height="63.575" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_di_1369_282" x="26" y="2.85001" width="148" height="63.575" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dy="1"/>
 <feGaussianBlur stdDeviation="2"/>
 <feComposite in2="hardAlpha" operator="out"/>
 <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1233_2"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1233_2" result="shape"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1369_282"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1369_282" result="shape"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dy="-1"/>
 <feGaussianBlur stdDeviation="2"/>
 <feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
 <feColorMatrix type="matrix" values="0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.65 0"/>
-<feBlend mode="normal" in2="shape" result="effect2_innerShadow_1233_2"/>
+<feBlend mode="normal" in2="shape" result="effect2_innerShadow_1369_282"/>
 </filter>
-<radialGradient id="paint0_radial_1233_2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(100 98.5) rotate(-90) scale(58.5 147.368)">
+<radialGradient id="paint0_radial_1369_282" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(100 58.5) rotate(-90) scale(58.5 147.368)">
 <stop stop-color="#FF8102"/>
 <stop offset="1" stop-color="#F8E0B0"/>
 </radialGradient>
-<radialGradient id="paint1_radial_1233_2" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(107.5 101.425) rotate(-90) scale(59.9625 151.053)">
+<radialGradient id="paint1_radial_1369_282" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(107.5 61.425) rotate(-90) scale(59.9625 151.053)">
 <stop stop-color="#FFCD32"/>
 <stop offset="1" stop-color="#FF8900"/>
 </radialGradient>
-<linearGradient id="paint2_linear_1233_2" x1="2.5" y1="102.963" x2="197.5" y2="102.963" gradientUnits="userSpaceOnUse">
+<linearGradient id="paint2_linear_1369_282" x1="2.5" y1="62.9626" x2="197.5" y2="62.9625" gradientUnits="userSpaceOnUse">
 <stop stop-color="#E48101" stop-opacity="0"/>
 <stop offset="0.503205" stop-color="#E48101"/>
 <stop offset="1" stop-color="#E48101" stop-opacity="0"/>
 </linearGradient>
-<linearGradient id="paint3_linear_1233_2" x1="32.5" y1="100" x2="32.5" y2="96" gradientUnits="userSpaceOnUse">
+<linearGradient id="paint3_linear_1369_282" x1="32.5" y1="60" x2="32.5" y2="56" gradientUnits="userSpaceOnUse">
 <stop stop-color="#FFCB1F"/>
 <stop offset="1" stop-color="#FFCB1F" stop-opacity="0"/>
 </linearGradient>
+<clipPath id="clip0_1369_282">
+<rect width="200" height="117" fill="white"/>
+</clipPath>
 </defs>
 </svg>

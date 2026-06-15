@@ -3,15 +3,149 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Privacy Policy — Nectar</title>
-    <meta name="robots" content="noindex" />
+    <link rel="icon" type="image/svg+xml" href="/nectar-logo.svg" />
+    <title>Privacy Policy · Nectar</title>
+    <meta name="description" content="How Nectar, a product of Signature Tech Studio, Inc., collects, uses, and protects your information." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@300..700&display=swap" rel="stylesheet" />
     <script type="module" src="/src/main.js"></script>
   </head>
-  <body class="min-h-screen bg-white text-ink-900 antialiased">
-    <!-- Scaffold only — content TBD (#39). -->
-    <main class="mx-auto max-w-2xl px-6 py-16">
-      <h1 class="text-2xl font-semibold">Privacy Policy</h1>
-      <p class="mt-4 text-ink-700">Content coming next.</p>
-    </main>
+  <body class="min-h-dvh bg-ink-900 text-zinc-300 antialiased font-['Geist',_sans-serif]">
+    <div class="isolate">
+      <!-- Header -->
+      <header class="border-b border-white/10">
+        <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+          <a href="/" aria-label="Homepage" class="flex items-center gap-2.5">
+            <img src="/nectar-logo.svg" alt="" class="w-14" />
+            <span class="text-lg font-semibold tracking-tight text-white">Nectar</span>
+          </a>
+          <nav class="flex items-center gap-1 text-sm">
+            <a href="/" class="rounded-md px-3 py-2 font-medium text-zinc-400 hover:text-white">Home</a>
+            <a href="/#beta" class="rounded-md px-3 py-2 font-medium text-white ring-1 ring-white/20 hover:bg-white/5">Request beta access</a>
+          </nav>
+        </div>
+      </header>
+
+      <!-- Legal content -->
+      <main class="py-16 sm:py-20">
+        <div class="mx-auto max-w-3xl px-6">
+          <h1 class="text-4xl font-semibold tracking-tight text-balance text-white">Privacy Policy</h1>
+          <p class="mt-4 text-base text-zinc-400">Last updated: June 15, 2026</p>
+
+          <div class="mt-10 space-y-10">
+            <section>
+              <p class="text-base/7 text-pretty text-zinc-300">
+                This Privacy Policy explains how Signature Tech Studio, Inc. ("Signature Tech Studio", "we", "us", or "our") collects, uses, and protects information when you use Nectar, our desktop application for reading and organizing construction-drawing documents. By using Nectar, you agree to this policy.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="text-xl font-semibold text-white">1. Information we collect</h2>
+              <p class="mt-3 text-base/7 text-pretty text-zinc-300">We collect the following:</p>
+              <ul class="mt-3 list-disc space-y-2 pl-5 text-base/7 text-pretty text-zinc-300">
+                <li><span class="font-medium text-white">Account and license information.</span> Your name, email address, company, license key, and a machine identifier we use to bind a license to a single computer.</li>
+                <li><span class="font-medium text-white">Documents you process.</span> The construction-drawing PDFs you upload, and the metadata we extract from them, such as sheet numbers, sheet titles, project names, and dates.</li>
+                <li><span class="font-medium text-white">Usage and technical data.</span> Information such as your operating system, the Nectar version you run, and diagnostic logs that help us keep the service working.</li>
+                <li><span class="font-medium text-white">Information you send us.</span> Details you provide through our beta-access form or by email, including your name, company, contact information, and the volume of work you handle.</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 class="text-xl font-semibold text-white">2. How we use information</h2>
+              <p class="mt-3 text-base/7 text-pretty text-zinc-300">We use the information we collect to:</p>
+              <ul class="mt-3 list-disc space-y-2 pl-5 text-base/7 text-pretty text-zinc-300">
+                <li>provide Nectar, including reading your documents and extracting sheet information;</li>
+                <li>issue and enforce licenses, including binding a license to one computer at a time;</li>
+                <li>respond to your requests and provide support;</li>
+                <li>maintain, secure, and improve the service; and</li>
+                <li>communicate with you about Nectar, including beta updates.</li>
+              </ul>
+              <p class="mt-4 text-base/7 text-pretty text-zinc-300">
+                We do not sell your information, and we do not use the documents you process to train AI models.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="text-xl font-semibold text-white">3. How your documents are processed</h2>
+              <p class="mt-3 text-base/7 text-pretty text-zinc-300">
+                To read a drawing set, Nectar relies on a small number of service providers. We share only what each provider needs to do its job.
+              </p>
+              <ul class="mt-3 list-disc space-y-2 pl-5 text-base/7 text-pretty text-zinc-300">
+                <li><span class="font-medium text-white">Microsoft Azure (optical character recognition).</span> The content of your documents is sent to Azure Document Intelligence so it can be read as text. Azure processes this content to return the recognized text to us.</li>
+                <li><span class="font-medium text-white">Amazon Web Services (hosting, storage, and AI).</span> We host Nectar's services and store documents on AWS. The AI step that interprets the recognized text runs on AWS within our own cloud environment, so document content used for that step stays inside our AWS account.</li>
+                <li><span class="font-medium text-white">HubSpot (contact management).</span> When you submit our beta-access form or contact us, your contact details are stored in HubSpot so we can follow up. Your documents are never sent to HubSpot.</li>
+              </ul>
+            </section>
+
+            <section>
+              <h2 class="text-xl font-semibold text-white">4. How we share information</h2>
+              <p class="mt-3 text-base/7 text-pretty text-zinc-300">
+                We share information only with the service providers described above, who act on our behalf, and when we are required to by law or to protect our rights, property, or safety, or those of others. We do not sell or rent your information. If we are ever involved in a merger or acquisition, we will require that your information remain protected under terms consistent with this policy.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="text-xl font-semibold text-white">5. Data retention</h2>
+              <p class="mt-3 text-base/7 text-pretty text-zinc-300">
+                We keep your documents and the metadata extracted from them for as long as needed to provide the service to you, and we delete them when you remove them or when we no longer need them for the purposes described in this policy. We keep account and license information for as long as your account is active and as needed to meet our legal obligations. If you would like your data deleted, contact us using the details below.
+              </p>
+              <!-- NOTE (not legal advice): confirm actual retention behavior against the backend (S3 lifecycle, whether docs are purged after processing or kept until deletion) and tighten this clause to match. -->
+            </section>
+
+            <section>
+              <h2 class="text-xl font-semibold text-white">6. Security</h2>
+              <p class="mt-3 text-base/7 text-pretty text-zinc-300">
+                We use reasonable technical and organizational measures to protect your information, including encryption in transit and at rest and restricted access to systems that hold your data. No method of transmission or storage is completely secure, so we cannot guarantee absolute security, but we work to protect your information and to limit who can access it.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="text-xl font-semibold text-white">7. Your choices and rights</h2>
+              <p class="mt-3 text-base/7 text-pretty text-zinc-300">
+                You may ask us to access, correct, or delete your personal information, and you may opt out of non-essential emails at any time. Depending on where you live, you may have additional rights under your local privacy laws. To make a request, contact us using the details below, and we will respond as required by applicable law.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="text-xl font-semibold text-white">8. Children's privacy</h2>
+              <p class="mt-3 text-base/7 text-pretty text-zinc-300">
+                Nectar is a tool for businesses and is not directed to children. We do not knowingly collect personal information from children.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="text-xl font-semibold text-white">9. Changes to this policy</h2>
+              <p class="mt-3 text-base/7 text-pretty text-zinc-300">
+                We may update this Privacy Policy from time to time. If we make material changes, we will update the date at the top of this page and, where appropriate, notify you. Your continued use of Nectar after changes take effect means you accept the updated policy.
+              </p>
+            </section>
+
+            <section>
+              <h2 class="text-xl font-semibold text-white">10. Contact</h2>
+              <p class="mt-3 text-base/7 text-pretty text-zinc-300">
+                Questions about this Privacy Policy or your data can be sent to <a href="mailto:joseph@stechstudio.com" class="font-medium text-nectar-400 hover:text-nectar-300">joseph@stechstudio.com</a>. Nectar is a product of Signature Tech Studio, Inc.
+              </p>
+            </section>
+          </div>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="border-t border-white/10 py-10">
+        <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 sm:flex-row">
+          <a href="/" aria-label="Homepage" class="flex items-center gap-2.5">
+            <img src="/nectar-logo.svg" alt="" class="size-6" />
+            <span class="text-base font-semibold tracking-tight text-white">Nectar</span>
+          </a>
+          <nav class="flex items-center gap-6 text-sm">
+            <a href="/tos.html" class="font-normal text-zinc-400 hover:text-white">Terms</a>
+            <a href="/privacy.html" class="font-normal text-white">Privacy</a>
+            <a href="mailto:joseph@stechstudio.com" class="font-normal text-zinc-400 hover:text-white">Contact</a>
+          </nav>
+          <p class="text-sm text-zinc-500">© 2026 Signature Tech Studio, Inc.</p>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
