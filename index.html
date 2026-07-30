@@ -57,7 +57,7 @@
             Stop hand-naming scanned drawings.
           </h1>
           <p class="mt-6 max-w-[52ch] text-lg text-pretty text-zinc-400">
-            Nectar reads the title block on every sheet of a scanned set — sheet number, title, project, date — then renames and files the
+            Nectar reads the title block on every sheet of a scanned set: sheet number, title, project, date. Then it renames and files the
             whole batch to your standard. A day of data entry becomes minutes of review.
           </p>
           <div class="mt-9 flex flex-wrap items-center gap-3">
@@ -205,15 +205,15 @@
               </dd>
             </div>
             <div data-reveal class="border-white/10 max-sm:border-t max-sm:py-6 sm:border-l sm:px-8 [--reveal-delay:0.1s]">
-              <dt class="text-base font-medium text-white">Only the uncertain waits for you</dt>
+              <dt class="text-base font-medium text-white">Only uncertain sheets wait for you</dt>
               <dd class="mt-2 text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
-                Confident reads go straight through. Anything below the confidence bar is held for a quick human check.
+                Confident reads go straight through. Anything below the confidence bar waits for a quick human check.
               </dd>
             </div>
             <div data-reveal class="border-white/10 max-sm:border-t max-sm:pt-6 sm:border-l sm:pl-8 [--reveal-delay:0.2s]">
               <dt class="text-base font-medium text-white">Gone from our cloud in 72 hours</dt>
               <dd class="mt-2 text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
-                Your PDFs are processed, then purged. We keep the extracted fields — not your drawings.
+                Your PDFs are processed, then purged. We keep the extracted fields, not your drawings.
               </dd>
             </div>
           </dl>
@@ -236,7 +236,7 @@
                 <p class="font-mono text-xs text-zinc-600 tabular-nums">01</p>
                 <h3 class="mt-2 text-xl font-semibold tracking-tight text-white">Drop the scans</h3>
                 <p class="mt-3 max-w-[52ch] text-base/7 text-pretty text-zinc-400">
-                  Drag in the whole set — hundreds of files at once. A half-finished batch picks up where it left off after a restart, and any
+                  Drag in the whole set, hundreds of files at once. A half-finished batch picks up where it left off after a restart, and any
                   failed upload retries straight from the original on disk.
                 </p>
               </div>
@@ -267,7 +267,7 @@
                 <p class="font-mono text-xs text-zinc-600 tabular-nums">02</p>
                 <h3 class="mt-2 text-xl font-semibold tracking-tight text-white">High-resolution OCR</h3>
                 <p class="mt-3 max-w-[52ch] text-base/7 text-pretty text-zinc-400">
-                  Every page is read with high-resolution OCR tuned for the small text crammed into title blocks. You get a searchable PDF
+                  Nectar runs every page through high-resolution OCR tuned for the small text crammed into title blocks. You get a searchable PDF
                   copy of every sheet as a free byproduct.
                 </p>
               </div>
@@ -299,7 +299,7 @@
                 <h3 class="mt-2 text-xl font-semibold tracking-tight text-white">AI reads the title block</h3>
                 <p class="mt-3 max-w-[52ch] text-base/7 text-pretty text-zinc-400">
                   A fast text model reads every sheet first. Only the hard ones escalate to a vision model that looks at the title block
-                  itself. All of it runs inside our own cloud — never a third-party AI service.
+                  itself. All of it runs inside our own cloud, and none of it touches a third-party AI service.
                 </p>
               </div>
               <div data-reveal class="rounded-xl bg-ink-925 outline-1 -outline-offset-1 outline-white/10">
@@ -339,7 +339,7 @@
                 <p class="font-mono text-xs text-zinc-600 tabular-nums">04</p>
                 <h3 class="mt-2 text-xl font-semibold tracking-tight text-white">Deterministic guards</h3>
                 <p class="mt-3 max-w-[52ch] text-base/7 text-pretty text-zinc-400">
-                  Geometry beats guesswork. Nectar snaps every read to what's actually printed on the sheet — discipline prefixes, rotated
+                  Geometry beats guesswork. Nectar snaps every read to what's actually printed on the sheet. Discipline prefixes, rotated
                   stamps, and the set's own drawing index keep the model honest.
                 </p>
               </div>
@@ -381,10 +381,10 @@
             <div class="grid items-center gap-x-8 gap-y-8 lg:grid-cols-2">
               <div data-reveal>
                 <p class="font-mono text-xs text-zinc-600 tabular-nums">05</p>
-                <h3 class="mt-2 text-xl font-semibold tracking-tight text-white">You review only the uncertain</h3>
+                <h3 class="mt-2 text-xl font-semibold tracking-tight text-white">You review only the uncertain sheets</h3>
                 <p class="mt-3 max-w-[52ch] text-base/7 text-pretty text-zinc-400">
-                  Sheets that clear the confidence bar are done. The rest queue for a side-by-side check that takes seconds — and a bad read
-                  refunds its credit automatically, no questions asked.
+                  Sheets that clear the confidence bar are done. The rest queue up for a side-by-side check that takes seconds. And if Nectar
+                  got one wrong, reporting it refunds the credit automatically.
                 </p>
               </div>
               <div data-reveal class="rounded-xl bg-ink-925 outline-1 -outline-offset-1 outline-white/10">
@@ -398,7 +398,7 @@
                     <p class="min-w-0 flex-1 truncate text-[0.8125rem] text-zinc-300">LIGHTING PLAN, LEVEL 1</p>
                     <p class="shrink-0 rounded-full bg-amber-400/10 px-2 py-0.5 text-xs font-medium text-amber-300">Review</p>
                   </div>
-                  <p class="mt-3 font-mono text-xs text-zinc-500">wrong read? report it — the credit comes back automatically</p>
+                  <p class="mt-3 font-mono text-xs text-zinc-500">wrong read? report it and the credit comes back</p>
                 </div>
               </div>
             </div>
@@ -422,7 +422,7 @@
               <dl class="mt-8 flex flex-col gap-4 text-sm">
                 <div class="flex items-baseline gap-4">
                   <dt class="flex w-28 shrink-0 items-center gap-1"><kbd class="keycap">⌘</kbd><kbd class="keycap">Enter</kbd></dt>
-                  <dd class="text-base/7 text-zinc-400 sm:text-sm/6"><span class="font-medium text-white">Accept &amp; next.</span> The entire loop — no mouse, no Tab key.</dd>
+                  <dd class="text-base/7 text-zinc-400 sm:text-sm/6"><span class="font-medium text-white">Accept &amp; next.</span> The whole review loop in one chord, without reaching for the mouse.</dd>
                 </div>
                 <div class="flex items-baseline gap-4">
                   <dt class="flex w-28 shrink-0 items-center gap-1"><kbd class="keycap">Enter</kbd></dt>
@@ -493,7 +493,7 @@
           <p class="font-mono text-xs font-medium tracking-wide text-nectar-400 uppercase">The output</p>
           <h2 class="mt-4 max-w-[40ch] text-3xl font-semibold tracking-tight text-balance text-white">Your files, named your way.</h2>
           <p class="mt-4 max-w-[52ch] text-lg text-pretty text-zinc-400">
-            Build the naming template once — drag the pieces into order — and every set after that comes out to the same standard.
+            Build the naming template once by dragging the pieces into order. Every set after that comes out to the same standard.
           </p>
 
           <div data-reveal class="mt-12 rounded-xl bg-ink-925 outline-1 -outline-offset-1 outline-white/10">
@@ -520,7 +520,7 @@
             <div data-reveal>
               <dt class="text-base font-medium text-white">Renames in place</dt>
               <dd class="mt-2 text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
-                Your originals are renamed on disk — never copied, never re-saved, bytes untouched.
+                Nectar renames your originals right on disk. It never copies or re-saves them, and it never touches their contents.
               </dd>
             </div>
             <div data-reveal class="[--reveal-delay:0.1s]">
@@ -547,29 +547,29 @@
             Built to pass your client's security review.
           </h2>
           <p class="mt-4 max-w-[52ch] text-lg text-pretty text-zinc-400">
-            You're handling other people's drawings. Here's exactly what happens to them — written to be pasted straight into the IT-approval
-            email.
+            You're handling other people's drawings. Here's exactly what happens to them, written so you can paste it straight into the
+            IT-approval email.
           </p>
           <dl class="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2">
             <div data-reveal>
               <dt class="text-base font-medium text-white">In-network AI</dt>
               <dd class="mt-2 max-w-[56ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
-                Extraction runs on AI models hosted inside our own cloud account. Your documents are never sent to a third-party AI vendor,
-                and they are never used to train models.
+                Extraction runs on AI models hosted inside our own cloud account. We never send your documents to a third-party AI vendor,
+                and we never use them to train models.
               </dd>
             </div>
             <div data-reveal class="[--reveal-delay:0.1s]">
               <dt class="text-base font-medium text-white">Purged within 72 hours</dt>
               <dd class="mt-2 max-w-[56ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
                 Uploaded PDFs are deleted from our storage within 72 hours of processing, with a hard 30-day backstop. We keep the extracted
-                fields — never your drawings.
+                data, never your drawings.
               </dd>
             </div>
             <div data-reveal>
               <dt class="text-base font-medium text-white">US and Canadian data planes</dt>
               <dd class="mt-2 max-w-[56ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
-                Your account is pinned to a region. Documents, OCR, and the document database stay in-region — United States or Canada, your
-                call at signup.
+                Nectar runs dedicated environments in the United States and Canada, and your account is pinned to one. Documents, OCR, and
+                the document database never leave the country.
               </dd>
             </div>
             <div data-reveal class="[--reveal-delay:0.1s]">
@@ -603,9 +603,9 @@
                   </svg>
                 </summary>
                 <p class="mt-3 max-w-[64ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
-                  Entirely on usage. Credits are the only thing you buy — one credit covers one file, end to end — so you pay for what you
-                  process and nothing more, with volume discounts as your sets get bigger. Tell us about your volume in the beta request and
-                  we'll set you up on the right footing.
+                  Entirely on usage. Credits are the only thing you buy, and one credit covers one file end to end. You pay for what you
+                  process, with volume discounts as your sets get bigger. Tell us about your volume in the beta request and we'll suggest
+                  the right starting point.
                 </p>
               </details>
               <details class="group py-5">
@@ -616,8 +616,8 @@
                   </svg>
                 </summary>
                 <p class="mt-3 max-w-[64ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
-                  You fix it in seconds — the sheet and its fields sit side by side, and clicking any OCR line drops that text straight into
-                  the field. Report a bad extraction and the credit is refunded automatically.
+                  You fix it in seconds. The sheet and its fields sit side by side, and clicking any OCR line drops that text straight into
+                  the field. Report a bad extraction and Nectar refunds the credit automatically.
                 </p>
               </details>
               <details class="group py-5">
@@ -640,8 +640,8 @@
                   </svg>
                 </summary>
                 <p class="mt-3 max-w-[64ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
-                  On your machine: originals are renamed in place, exports are separate copies, and nothing is ever deleted. In our cloud:
-                  processing copies are purged within 72 hours.
+                  On your machine, Nectar renames originals in place, writes exports as separate copies, and never deletes anything. In our
+                  cloud, processing copies are purged within 72 hours.
                 </p>
               </details>
               <details class="group py-5">
@@ -664,7 +664,7 @@
                   </svg>
                 </summary>
                 <p class="mt-3 max-w-[64ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
-                  Per-seat license keys, one machine per seat. You manage seats yourself in the customer console — add one, release one, or
+                  Per-seat license keys, one machine per seat. You manage seats yourself in the customer console: add one, release one, or
                   move a seat to a new computer without emailing anyone.
                 </p>
               </details>
@@ -676,8 +676,8 @@
                   </svg>
                 </summary>
                 <p class="mt-3 max-w-[64ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
-                  Yes. Nectar runs dedicated environments in the United States and Canada, and your account is pinned to one of them —
-                  documents never leave the country they're processed in. Mention residency in your beta request and we'll set your account
+                  Yes. Nectar runs dedicated environments in the United States and Canada, and your account is pinned to one of them.
+                  Documents never leave the country they're processed in. Mention residency in your beta request and we'll set your account
                   up in the right one.
                 </p>
               </details>
