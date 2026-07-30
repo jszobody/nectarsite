@@ -1,2 +1,6 @@
-// Entry that pulls Tailwind into every page. No runtime behavior yet.
-import './main.css'
+import "./main.css";
+import { initReveals } from "./reveal.js";
+import { initDemo } from "./demo.js";
+
+initReveals();
+initDemo();

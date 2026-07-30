@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scheme-only-dark">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,13 +7,13 @@
     <title>Nectar · Automatic title-block extraction for construction drawings</title>
     <meta
       name="description"
-      content="Nectar reads the title block on every sheet of a scanned drawing set, then renames and files the whole batch. A native macOS and Windows app for reprographics and document-scanning teams."
+      content="Nectar reads the title block on every sheet of a scanned drawing set, then renames and files the whole batch to your standard. A native macOS and Windows app for reprographics and document-control teams."
     />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Nectar · Stop hand-naming scanned drawings" />
     <meta
       property="og:description"
-      content="Nectar reads the title block on every sheet of a scanned drawing set, then renames and files the whole batch."
+      content="Nectar reads the title block on every sheet of a scanned drawing set, then renames and files the whole batch. A day of manual data entry becomes minutes of review."
     />
     <meta property="og:url" content="https://nectardocs.com/" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -24,166 +24,677 @@
     <script src="https://js.hsforms.net/forms/embed/21331419.js" defer></script>
     <script type="module" src="/src/main.js"></script>
   </head>
-  <body class="min-h-dvh bg-ink-900 text-zinc-300 antialiased font-['Geist',_sans-serif]">
+  <body class="min-h-dvh bg-ink-950 font-sans text-zinc-300 antialiased">
     <div class="isolate">
       <!-- Header -->
-      <header class="border-b border-white/10">
-        <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-4">
+      <header class="sticky top-0 z-50 border-b border-white/10 bg-ink-950/80 backdrop-blur">
+        <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
           <a href="/" aria-label="Homepage" class="flex items-center gap-2.5">
-            <img src="/nectar-logo.svg" alt="" class="w-14" />
+            <img src="/nectar-logo.svg" alt="" class="w-12 shrink-0" />
             <span class="text-lg font-semibold tracking-tight text-white">Nectar</span>
           </a>
           <nav class="flex items-center gap-1 text-sm">
-            <a href="#flow" class="rounded-md px-3 py-2 font-medium text-zinc-400 hover:text-white max-sm:hidden">How it works</a>
-            <a href="#features" class="rounded-md px-3 py-2 font-medium text-zinc-400 hover:text-white max-sm:hidden">Features</a>
-            <a href="#beta" class="rounded-md px-3 py-2 font-medium text-white ring-1 ring-white/20 hover:bg-white/5">Request beta access</a>
+            <a href="#how" class="rounded-md px-3 py-2 font-medium text-zinc-400 hover:text-white max-md:hidden">How it works</a>
+            <a href="#review" class="rounded-md px-3 py-2 font-medium text-zinc-400 hover:text-white max-md:hidden">Review</a>
+            <a href="#security" class="rounded-md px-3 py-2 font-medium text-zinc-400 hover:text-white max-md:hidden">Security</a>
+            <a href="#faq" class="rounded-md px-3 py-2 font-medium text-zinc-400 hover:text-white max-md:hidden">FAQ</a>
+            <a href="/download.html" class="rounded-md px-3 py-2 font-medium text-zinc-400 hover:text-white max-sm:hidden">Download</a>
+            <a
+              href="#beta"
+              class="ml-1 rounded-lg px-3 py-2 font-semibold text-white ring-1 ring-white/20 hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nectar-400"
+            >
+              Request beta access
+            </a>
           </nav>
         </div>
       </header>
 
-      <!-- Hero: split, blueprint grid -->
-      <section
-        class="relative overflow-hidden border-b border-white/10 [background-image:linear-gradient(to_right,rgba(255,255,255,0.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.04)_1px,transparent_1px)] [background-size:32px_32px]"
-      >
-        <div class="mx-auto grid max-w-6xl items-center gap-12 px-6 py-20 lg:grid-cols-[5fr_4fr] lg:py-28">
-          <div>
-            <p class="font-['Geist_Mono',_monospace] text-xs font-medium tracking-wide text-nectar-400 uppercase">OCR + AI title-block extraction</p>
-            <h1 class="mt-5 max-w-[18ch] text-4xl font-semibold tracking-tight text-balance text-white sm:text-6xl">
-              Stop hand-naming scanned drawings.
-            </h1>
-            <p class="mt-6 max-w-[52ch] text-lg text-pretty text-zinc-400">
-              Nectar reads the title block on every sheet of a scanned set, then renames and files the whole batch. A day of manual data entry becomes a few minutes of review.
-            </p>
-            <div class="mt-9 flex flex-wrap items-center gap-3">
-              <a
-                href="#beta"
-                class="rounded-lg bg-nectar-600 px-4 py-2.5 text-sm font-semibold text-white ring-1 ring-nectar-600 hover:bg-nectar-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nectar-400"
+      <!-- Hero -->
+      <section class="drafting-grid relative overflow-hidden border-b border-white/10">
+        <div class="mx-auto max-w-6xl px-6 pt-20 pb-16 sm:pt-28">
+          <p class="font-mono text-xs font-medium tracking-wide text-nectar-400 uppercase">OCR + AI title-block extraction</p>
+          <h1 class="mt-5 max-w-[24ch] text-4xl font-semibold tracking-tight text-balance text-white sm:text-6xl">
+            Stop hand-naming scanned drawings.
+          </h1>
+          <p class="mt-6 max-w-[52ch] text-lg text-pretty text-zinc-400">
+            Nectar reads the title block on every sheet of a scanned set — sheet number, title, project, date — then renames and files the
+            whole batch to your standard. A day of data entry becomes minutes of review.
+          </p>
+          <div class="mt-9 flex flex-wrap items-center gap-3">
+            <a
+              href="#beta"
+              class="rounded-lg bg-nectar-600 px-4 py-2.5 text-sm font-semibold text-white hover:bg-nectar-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-nectar-400"
+            >
+              Request beta access
+            </a>
+            <a href="#how" class="px-4 py-2.5 text-sm font-semibold text-zinc-300 hover:text-white">See how it works</a>
+          </div>
+
+          <!-- Live demo: the app working through a set. Ships in its finished
+               state; src/demo.js rewinds and replays it when motion is allowed. -->
+          <div id="demo" class="plot-corners mt-16 overflow-hidden rounded-xl bg-ink-925 outline-1 -outline-offset-1 outline-white/10">
+            <!-- window bar -->
+            <div class="flex items-center gap-2 border-b border-white/10 px-4 py-3">
+              <span class="size-2.5 shrink-0 rounded-full bg-zinc-600"></span>
+              <span class="size-2.5 shrink-0 rounded-full bg-zinc-600"></span>
+              <span class="size-2.5 shrink-0 rounded-full bg-zinc-600"></span>
+              <p class="ml-2 min-w-0 truncate font-mono text-xs text-zinc-500">Riverside Medical Center · Addendum 02</p>
+              <p class="ml-auto shrink-0 font-mono text-xs text-zinc-600 tabular-nums max-sm:hidden">Credits 1,412</p>
+            </div>
+            <!-- summary row -->
+            <div class="flex items-center justify-between gap-4 border-b border-white/10 px-4 py-2.5 sm:px-5">
+              <p id="demo-summary" class="font-mono text-xs text-zinc-400 tabular-nums">6 sheets · renamed and filed</p>
+              <p id="demo-rename" class="flex shrink-0 items-center gap-1.5 font-mono text-xs text-zinc-400">
+                <kbd class="keycap">⌘</kbd><kbd class="keycap">S</kbd><span class="ml-1">Rename</span>
+              </p>
+            </div>
+            <!-- column headings -->
+            <div
+              class="grid grid-cols-[minmax(0,1fr)_--spacing(14)_auto] items-center gap-3 border-b border-white/5 px-4 py-2 sm:grid-cols-[minmax(0,5fr)_--spacing(20)_minmax(0,5fr)_--spacing(18)] sm:px-5"
+            >
+              <p class="font-mono text-xs text-zinc-600">File</p>
+              <p class="font-mono text-xs text-zinc-600">Sheet</p>
+              <p class="font-mono text-xs text-zinc-600 max-sm:hidden">Title</p>
+              <p class="font-mono text-xs text-zinc-600 max-sm:text-right sm:justify-self-end">Status</p>
+            </div>
+            <!-- sheet rows (finished state; demo.js rewinds it) -->
+            <div class="divide-y divide-white/5">
+              <div
+                data-demo-row
+                class="grid grid-cols-[minmax(0,1fr)_--spacing(14)_auto] items-center gap-3 px-4 py-2.5 sm:grid-cols-[minmax(0,5fr)_--spacing(20)_minmax(0,5fr)_--spacing(18)] sm:px-5"
               >
-                Request beta access
-              </a>
-              <a href="#flow" class="px-4 py-2.5 text-sm font-semibold text-zinc-300 hover:text-white">See how it works</a>
-            </div>
-          </div>
-
-          <!-- Concept mockup: Nectar working through a set -->
-          <div class="relative">
-            <div class="overflow-hidden rounded-xl bg-zinc-900 outline-1 -outline-offset-1 outline-white/10">
-              <!-- window bar -->
-              <div class="flex items-center gap-2 border-b border-white/10 px-4 py-3">
-                <span class="size-2.5 rounded-full bg-zinc-600"></span>
-                <span class="size-2.5 rounded-full bg-zinc-600"></span>
-                <span class="size-2.5 rounded-full bg-zinc-600"></span>
-                <span class="font-['Geist_Mono',_monospace] ml-2 text-xs text-zinc-500">Hillcrest Elementary · Set 04</span>
+                <p data-cell="file" class="demo-cell-swap truncate font-mono text-[0.8125rem] text-zinc-300">A-101 - First Floor Plan.pdf</p>
+                <div class="flex min-w-0 items-center gap-1.5">
+                  <p data-cell="num" class="font-mono text-[0.8125rem] font-medium text-nectar-400 tabular-nums">A-101</p>
+                  <p data-auto class="max-sm:hidden shrink-0 rounded-sm bg-amber-400/10 px-1 font-mono text-[0.6875rem] text-amber-300 opacity-0">auto</p>
+                </div>
+                <div class="flex min-w-0 items-center gap-1.5 max-sm:hidden">
+                  <p data-cell="title" class="truncate text-[0.8125rem] text-zinc-300">FIRST FLOOR PLAN</p>
+                  <p data-auto class="shrink-0 rounded-sm bg-amber-400/10 px-1 font-mono text-[0.6875rem] text-amber-300 opacity-0">auto</p>
+                </div>
+                <p data-cell="status" class="rounded-full bg-emerald-400/10 px-2 py-0.5 text-center text-xs font-medium text-emerald-300 sm:justify-self-end">Done</p>
               </div>
-              <!-- summary row -->
-              <div class="flex items-center justify-between border-b border-white/10 px-5 py-3">
-                <p class="text-sm font-semibold text-white tabular-nums">428 sheets</p>
-                <p class="font-['Geist_Mono',_monospace] text-xs text-emerald-400 tabular-nums">412 done · 16 to review</p>
+              <div
+                data-demo-row
+                class="grid grid-cols-[minmax(0,1fr)_--spacing(14)_auto] items-center gap-3 px-4 py-2.5 sm:grid-cols-[minmax(0,5fr)_--spacing(20)_minmax(0,5fr)_--spacing(18)] sm:px-5"
+              >
+                <p data-cell="file" class="demo-cell-swap truncate font-mono text-[0.8125rem] text-zinc-300">A-201 - Exterior Elevations.pdf</p>
+                <div class="flex min-w-0 items-center gap-1.5">
+                  <p data-cell="num" class="font-mono text-[0.8125rem] font-medium text-nectar-400 tabular-nums">A-201</p>
+                  <p data-auto class="max-sm:hidden shrink-0 rounded-sm bg-amber-400/10 px-1 font-mono text-[0.6875rem] text-amber-300 opacity-0">auto</p>
+                </div>
+                <div class="flex min-w-0 items-center gap-1.5 max-sm:hidden">
+                  <p data-cell="title" class="truncate text-[0.8125rem] text-zinc-300">EXTERIOR ELEVATIONS</p>
+                  <p data-auto class="shrink-0 rounded-sm bg-amber-400/10 px-1 font-mono text-[0.6875rem] text-amber-300 opacity-0">auto</p>
+                </div>
+                <p data-cell="status" class="rounded-full bg-emerald-400/10 px-2 py-0.5 text-center text-xs font-medium text-emerald-300 sm:justify-self-end">Done</p>
               </div>
-              <!-- sheet rows -->
-              <dl class="divide-y divide-white/5">
-                <div class="flex items-center gap-3 px-5 py-3">
-                  <dt class="font-['Geist_Mono',_monospace] w-14 shrink-0 text-sm font-medium text-nectar-400 tabular-nums">A‑101</dt>
-                  <dd class="min-w-0 flex-1 truncate text-sm text-zinc-300">FIRST FLOOR PLAN</dd>
-                  <span class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400">Done</span>
+              <div
+                data-demo-row
+                class="grid grid-cols-[minmax(0,1fr)_--spacing(14)_auto] items-center gap-3 px-4 py-2.5 sm:grid-cols-[minmax(0,5fr)_--spacing(20)_minmax(0,5fr)_--spacing(18)] sm:px-5"
+              >
+                <p data-cell="file" class="demo-cell-swap truncate font-mono text-[0.8125rem] text-zinc-300">S-301 - Foundation Details.pdf</p>
+                <div class="flex min-w-0 items-center gap-1.5">
+                  <p data-cell="num" class="font-mono text-[0.8125rem] font-medium text-nectar-400 tabular-nums">S-301</p>
+                  <p data-auto class="max-sm:hidden shrink-0 rounded-sm bg-amber-400/10 px-1 font-mono text-[0.6875rem] text-amber-300 opacity-0">auto</p>
                 </div>
-                <div class="flex items-center gap-3 px-5 py-3">
-                  <dt class="font-['Geist_Mono',_monospace] w-14 shrink-0 text-sm font-medium text-nectar-400 tabular-nums">A‑201</dt>
-                  <dd class="min-w-0 flex-1 truncate text-sm text-zinc-300">EXTERIOR ELEVATIONS</dd>
-                  <span class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400">Done</span>
+                <div class="flex min-w-0 items-center gap-1.5 max-sm:hidden">
+                  <p data-cell="title" class="truncate text-[0.8125rem] text-zinc-300">FOUNDATION DETAILS</p>
+                  <p data-auto class="shrink-0 rounded-sm bg-amber-400/10 px-1 font-mono text-[0.6875rem] text-amber-300 opacity-0">auto</p>
                 </div>
-                <div class="flex items-center gap-3 bg-nectar-500/5 px-5 py-3">
-                  <dt class="font-['Geist_Mono',_monospace] w-14 shrink-0 text-sm font-medium text-nectar-400 tabular-nums">E‑101</dt>
-                  <dd class="min-w-0 flex-1 truncate text-sm text-zinc-300">LIGHTING PLAN, LEVEL 1</dd>
-                  <span class="rounded-full bg-amber-500/10 px-2 py-0.5 text-xs font-medium text-amber-400">Review</span>
+                <p data-cell="status" class="rounded-full bg-emerald-400/10 px-2 py-0.5 text-center text-xs font-medium text-emerald-300 sm:justify-self-end">Done</p>
+              </div>
+              <div
+                data-demo-row
+                class="grid grid-cols-[minmax(0,1fr)_--spacing(14)_auto] items-center gap-3 px-4 py-2.5 sm:grid-cols-[minmax(0,5fr)_--spacing(20)_minmax(0,5fr)_--spacing(18)] sm:px-5"
+              >
+                <p data-cell="file" class="demo-cell-swap truncate font-mono text-[0.8125rem] text-zinc-300">E-101 - Lighting Plan, Level 1.pdf</p>
+                <div class="flex min-w-0 items-center gap-1.5">
+                  <p data-cell="num" class="font-mono text-[0.8125rem] font-medium text-nectar-400 tabular-nums">E-101</p>
+                  <p data-auto class="max-sm:hidden shrink-0 rounded-sm bg-amber-400/10 px-1 font-mono text-[0.6875rem] text-amber-300 opacity-0">auto</p>
                 </div>
-                <div class="flex items-center gap-3 px-5 py-3">
-                  <dt class="font-['Geist_Mono',_monospace] w-14 shrink-0 text-sm font-medium text-nectar-400 tabular-nums">S‑301</dt>
-                  <dd class="min-w-0 flex-1 truncate text-sm text-zinc-300">FOUNDATION DETAILS</dd>
-                  <span class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400">Done</span>
+                <div class="flex min-w-0 items-center gap-1.5 max-sm:hidden">
+                  <p data-cell="title" class="truncate text-[0.8125rem] text-zinc-300">LIGHTING PLAN, LEVEL 1</p>
+                  <p data-auto class="shrink-0 rounded-sm bg-amber-400/10 px-1 font-mono text-[0.6875rem] text-amber-300 opacity-0">auto</p>
                 </div>
-                <div class="flex items-center gap-3 px-5 py-3">
-                  <dt class="font-['Geist_Mono',_monospace] w-14 shrink-0 text-sm font-medium text-nectar-400 tabular-nums">M‑401</dt>
-                  <dd class="min-w-0 flex-1 truncate text-sm text-zinc-300">HVAC PLAN, LEVEL 1</dd>
-                  <span class="rounded-full bg-emerald-500/10 px-2 py-0.5 text-xs font-medium text-emerald-400">Done</span>
+                <p data-cell="status" class="rounded-full bg-emerald-400/10 px-2 py-0.5 text-center text-xs font-medium text-emerald-300 sm:justify-self-end">Done</p>
+              </div>
+              <div
+                data-demo-row
+                class="grid grid-cols-[minmax(0,1fr)_--spacing(14)_auto] items-center gap-3 px-4 py-2.5 sm:grid-cols-[minmax(0,5fr)_--spacing(20)_minmax(0,5fr)_--spacing(18)] sm:px-5"
+              >
+                <p data-cell="file" class="demo-cell-swap truncate font-mono text-[0.8125rem] text-zinc-300">M-401 - HVAC Plan, Level 1.pdf</p>
+                <div class="flex min-w-0 items-center gap-1.5">
+                  <p data-cell="num" class="font-mono text-[0.8125rem] font-medium text-nectar-400 tabular-nums">M-401</p>
+                  <p data-auto class="max-sm:hidden shrink-0 rounded-sm bg-amber-400/10 px-1 font-mono text-[0.6875rem] text-amber-300 opacity-0">auto</p>
                 </div>
-              </dl>
+                <div class="flex min-w-0 items-center gap-1.5 max-sm:hidden">
+                  <p data-cell="title" class="truncate text-[0.8125rem] text-zinc-300">HVAC PLAN, LEVEL 1</p>
+                  <p data-auto class="shrink-0 rounded-sm bg-amber-400/10 px-1 font-mono text-[0.6875rem] text-amber-300 opacity-0">auto</p>
+                </div>
+                <p data-cell="status" class="rounded-full bg-emerald-400/10 px-2 py-0.5 text-center text-xs font-medium text-emerald-300 sm:justify-self-end">Done</p>
+              </div>
+              <div
+                data-demo-row
+                class="grid grid-cols-[minmax(0,1fr)_--spacing(14)_auto] items-center gap-3 px-4 py-2.5 sm:grid-cols-[minmax(0,5fr)_--spacing(20)_minmax(0,5fr)_--spacing(18)] sm:px-5"
+              >
+                <p data-cell="file" class="demo-cell-swap truncate font-mono text-[0.8125rem] text-zinc-300">P-102 - Plumbing Risers.pdf</p>
+                <div class="flex min-w-0 items-center gap-1.5">
+                  <p data-cell="num" class="font-mono text-[0.8125rem] font-medium text-nectar-400 tabular-nums">P-102</p>
+                  <p data-auto class="max-sm:hidden shrink-0 rounded-sm bg-amber-400/10 px-1 font-mono text-[0.6875rem] text-amber-300 opacity-0">auto</p>
+                </div>
+                <div class="flex min-w-0 items-center gap-1.5 max-sm:hidden">
+                  <p data-cell="title" class="truncate text-[0.8125rem] text-zinc-300">PLUMBING RISERS</p>
+                  <p data-auto class="shrink-0 rounded-sm bg-amber-400/10 px-1 font-mono text-[0.6875rem] text-amber-300 opacity-0">auto</p>
+                </div>
+                <p data-cell="status" class="rounded-full bg-emerald-400/10 px-2 py-0.5 text-center text-xs font-medium text-emerald-300 sm:justify-self-end">Done</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- Before / after -->
-      <section id="flow" class="border-b border-white/10 py-20">
-        <div class="mx-auto max-w-6xl px-6">
-          <div>
-            <p class="font-['Geist_Mono',_monospace] text-xs font-medium tracking-wide text-nectar-400 uppercase">Before &amp; after</p>
-            <h2 class="mt-4 max-w-[24ch] text-3xl font-semibold tracking-tight text-balance text-white">A scanner dump becomes a filed set.</h2>
-          </div>
-          <div class="mt-12 grid gap-6 lg:grid-cols-2">
-            <div class="rounded-xl bg-zinc-900/60 p-6 outline-1 -outline-offset-1 outline-white/10">
-              <p class="text-sm font-medium text-zinc-400">Off the scanner</p>
-              <ul role="list" class="mt-4 space-y-2 font-['Geist_Mono',_monospace] text-sm text-zinc-500">
-                <li>scan_0001.pdf</li>
-                <li>scan_0002.pdf</li>
-                <li>scan_0003.pdf</li>
-                <li>scan_0004.pdf</li>
-                <li class="text-zinc-600">… 424 more</li>
-              </ul>
+      <!-- Fact band -->
+      <section class="border-b border-white/10">
+        <div class="mx-auto max-w-6xl px-6 py-14">
+          <dl class="grid sm:grid-cols-3">
+            <div data-reveal class="max-sm:pb-6 sm:pr-8">
+              <dt class="text-base font-medium text-white">Hundreds of sheets per drop</dt>
+              <dd class="mt-2 text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                Add a whole set at once. Uploads run in parallel, survive an app restart, and retry per file.
+              </dd>
             </div>
-            <div class="rounded-xl bg-zinc-900/60 p-6 outline-1 -outline-offset-1 outline-nectar-500/40">
-              <p class="text-sm font-medium text-nectar-400">Filed by Nectar</p>
-              <ul role="list" class="mt-4 space-y-2 font-['Geist_Mono',_monospace] text-sm text-zinc-300">
-                <li>A-101 - First Floor Plan.pdf</li>
-                <li>A-201 - Exterior Elevations.pdf</li>
-                <li>E-101 - Lighting Plan, Level 1.pdf</li>
-                <li>S-301 - Foundation Details.pdf</li>
-                <li class="text-zinc-500">… every sheet, named</li>
-              </ul>
+            <div data-reveal class="border-white/10 max-sm:border-t max-sm:py-6 sm:border-l sm:px-8 [--reveal-delay:0.1s]">
+              <dt class="text-base font-medium text-white">Only the uncertain waits for you</dt>
+              <dd class="mt-2 text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                Confident reads go straight through. Anything below the confidence bar is held for a quick human check.
+              </dd>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Features -->
-      <section id="features" class="border-b border-white/10 py-20">
-        <div class="mx-auto max-w-6xl px-6">
-          <h2 class="max-w-[24ch] text-3xl font-semibold tracking-tight text-balance text-white">Built for production work.</h2>
-          <dl class="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
-            <div>
-              <dt class="text-base font-semibold text-white">Reads the hard sheets</dt>
-              <dd class="mt-2 text-base text-pretty text-zinc-400">It handles the messy real-world sheets: rotated, skewed, stamped, and non-standard title blocks.</dd>
-            </div>
-            <div>
-              <dt class="text-base font-semibold text-white">Confidence-gated</dt>
-              <dd class="mt-2 text-base text-pretty text-zinc-400">Confident reads go straight through. Nectar holds anything uncertain for a quick human check.</dd>
-            </div>
-            <div>
-              <dt class="text-base font-semibold text-white">In-network AI</dt>
-              <dd class="mt-2 text-base text-pretty text-zinc-400">The AI runs inside our own cloud, and we never use your documents to train models.</dd>
-            </div>
-            <div>
-              <dt class="text-base font-semibold text-white">Native desktop app</dt>
-              <dd class="mt-2 text-base text-pretty text-zinc-400">It runs on macOS and Windows, right alongside the tools your shop already uses.</dd>
-            </div>
-            <div>
-              <dt class="text-base font-semibold text-white">One naming standard</dt>
-              <dd class="mt-2 text-base text-pretty text-zinc-400">Set your naming convention once. Nectar applies it to the whole set, and every set after that.</dd>
-            </div>
-            <div>
-              <dt class="text-base font-semibold text-white">Side-by-side review</dt>
-              <dd class="mt-2 text-base text-pretty text-zinc-400">The sheet and its extracted fields sit side by side, so fixing one takes seconds.</dd>
+            <div data-reveal class="border-white/10 max-sm:border-t max-sm:pt-6 sm:border-l sm:pl-8 [--reveal-delay:0.2s]">
+              <dt class="text-base font-medium text-white">Gone from our cloud in 72 hours</dt>
+              <dd class="mt-2 text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                Your PDFs are processed, then purged. We keep the extracted fields — not your drawings.
+              </dd>
             </div>
           </dl>
         </div>
       </section>
 
+      <!-- How it works -->
+      <section id="how" class="border-b border-white/10 scroll-mt-16">
+        <div class="mx-auto max-w-6xl px-6 py-20 sm:py-24">
+          <p class="font-mono text-xs font-medium tracking-wide text-nectar-400 uppercase">The pipeline</p>
+          <h2 class="mt-4 max-w-[40ch] text-3xl font-semibold tracking-tight text-balance text-white">How Nectar reads a sheet.</h2>
+          <p class="mt-4 max-w-[52ch] text-lg text-pretty text-zinc-400">
+            Five stages between a scanner dump and a filed set. Most sheets never need you at all.
+          </p>
+
+          <div class="mt-16 flex flex-col gap-16">
+            <!-- Step 1: drop -->
+            <div class="grid items-center gap-x-8 gap-y-8 lg:grid-cols-2">
+              <div data-reveal>
+                <p class="font-mono text-xs text-zinc-600 tabular-nums">01</p>
+                <h3 class="mt-2 text-xl font-semibold tracking-tight text-white">Drop the scans</h3>
+                <p class="mt-3 max-w-[52ch] text-base/7 text-pretty text-zinc-400">
+                  Drag in the whole set — hundreds of files at once. A half-finished batch picks up where it left off after a restart, and any
+                  failed upload retries straight from the original on disk.
+                </p>
+              </div>
+              <div data-reveal class="rounded-xl bg-ink-925 outline-1 -outline-offset-1 outline-white/10">
+                <div class="flex items-center justify-between border-b border-white/10 px-4 py-2">
+                  <p class="font-mono text-xs tracking-wide text-zinc-500 uppercase">Ingest</p>
+                  <p class="font-mono text-xs text-zinc-600 tabular-nums">01 / 05</p>
+                </div>
+                <div class="p-5">
+                  <div class="rounded-lg border border-dashed border-white/20 p-4">
+                    <p class="text-center font-mono text-xs text-zinc-500">Drop 214 files to upload</p>
+                    <div class="mt-4 flex flex-wrap gap-2">
+                      <p class="rounded-md bg-white/5 px-2 py-1 font-mono text-xs text-zinc-400">scan_0041.pdf</p>
+                      <p class="rounded-md bg-white/5 px-2 py-1 font-mono text-xs text-zinc-400">scan_0042.pdf</p>
+                      <p class="rounded-md bg-white/5 px-2 py-1 font-mono text-xs text-zinc-400">scan_0043.pdf</p>
+                      <p class="rounded-md bg-white/5 px-2 py-1 font-mono text-xs text-zinc-400 max-sm:hidden">scan_0044.pdf</p>
+                      <p class="rounded-md bg-white/5 px-2 py-1 font-mono text-xs text-zinc-500">+ 210 more</p>
+                    </div>
+                  </div>
+                  <p class="mt-3 font-mono text-xs text-zinc-500">parallel uploads · resumes after restart · per-file retry</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 2: OCR -->
+            <div class="grid items-center gap-x-8 gap-y-8 lg:grid-cols-2">
+              <div data-reveal>
+                <p class="font-mono text-xs text-zinc-600 tabular-nums">02</p>
+                <h3 class="mt-2 text-xl font-semibold tracking-tight text-white">High-resolution OCR</h3>
+                <p class="mt-3 max-w-[52ch] text-base/7 text-pretty text-zinc-400">
+                  Every page is read with high-resolution OCR tuned for the small text crammed into title blocks. You get a searchable PDF
+                  copy of every sheet as a free byproduct.
+                </p>
+              </div>
+              <div data-reveal class="rounded-xl bg-ink-925 outline-1 -outline-offset-1 outline-white/10">
+                <div class="flex items-center justify-between border-b border-white/10 px-4 py-2">
+                  <p class="font-mono text-xs tracking-wide text-zinc-500 uppercase">OCR</p>
+                  <p class="font-mono text-xs text-zinc-600 tabular-nums">02 / 05</p>
+                </div>
+                <div class="p-5">
+                  <div class="relative overflow-hidden rounded-lg border border-white/10 p-4">
+                    <div class="scan-line absolute inset-x-0 top-0 h-0.5 bg-nectar-400/60"></div>
+                    <div class="flex flex-col gap-2">
+                      <div class="h-2 w-3/4 rounded-sm bg-white/10"></div>
+                      <div class="h-2 w-1/2 rounded-sm bg-white/10"></div>
+                      <div class="h-2 w-2/3 rounded-sm bg-white/10"></div>
+                      <div class="h-2 w-2/5 rounded-sm bg-white/10"></div>
+                      <div class="mt-2 ml-auto h-8 w-2/5 rounded-sm border border-white/15"></div>
+                    </div>
+                  </div>
+                  <p class="mt-3 font-mono text-xs text-zinc-500">high-res mode for small title-block text · + searchable PDF copy</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: AI reads the title block -->
+            <div class="grid items-center gap-x-8 gap-y-8 lg:grid-cols-2">
+              <div data-reveal>
+                <p class="font-mono text-xs text-zinc-600 tabular-nums">03</p>
+                <h3 class="mt-2 text-xl font-semibold tracking-tight text-white">AI reads the title block</h3>
+                <p class="mt-3 max-w-[52ch] text-base/7 text-pretty text-zinc-400">
+                  A fast text model reads every sheet first. Only the hard ones escalate to a vision model that looks at the title block
+                  itself. All of it runs inside our own cloud — never a third-party AI service.
+                </p>
+              </div>
+              <div data-reveal class="rounded-xl bg-ink-925 outline-1 -outline-offset-1 outline-white/10">
+                <div class="flex items-center justify-between border-b border-white/10 px-4 py-2">
+                  <p class="font-mono text-xs tracking-wide text-zinc-500 uppercase">Extraction</p>
+                  <p class="font-mono text-xs text-zinc-600 tabular-nums">03 / 05</p>
+                </div>
+                <div class="p-5">
+                  <div class="rounded-lg border border-white/10 p-4">
+                    <div class="flex items-end justify-between gap-4">
+                      <div class="min-w-0">
+                        <p class="font-mono text-xs text-zinc-600">SHEET NO.</p>
+                        <p class="mt-1 inline-block rounded-sm px-1 font-mono text-2xl font-medium whitespace-nowrap text-nectar-400 tabular-nums outline-1 outline-nectar-400/50">
+                          E-101
+                        </p>
+                      </div>
+                      <div class="min-w-0 text-right">
+                        <p class="font-mono text-xs text-zinc-600">SHEET TITLE</p>
+                        <p class="mt-1 inline-block truncate rounded-sm px-1 font-mono text-sm text-zinc-300 outline-1 outline-white/25">
+                          LIGHTING PLAN, LEVEL 1
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mt-3 flex flex-wrap items-center gap-2">
+                    <p class="rounded-full bg-white/5 px-2 py-0.5 font-mono text-xs text-zinc-400">text pass · every sheet</p>
+                    <p class="font-mono text-xs text-zinc-600">→</p>
+                    <p class="rounded-full bg-nectar-400/10 px-2 py-0.5 font-mono text-xs text-nectar-300">vision pass · only when unsure</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 4: deterministic guards -->
+            <div class="grid items-center gap-x-8 gap-y-8 lg:grid-cols-2">
+              <div data-reveal>
+                <p class="font-mono text-xs text-zinc-600 tabular-nums">04</p>
+                <h3 class="mt-2 text-xl font-semibold tracking-tight text-white">Deterministic guards</h3>
+                <p class="mt-3 max-w-[52ch] text-base/7 text-pretty text-zinc-400">
+                  Geometry beats guesswork. Nectar snaps every read to what's actually printed on the sheet — discipline prefixes, rotated
+                  stamps, and the set's own drawing index keep the model honest.
+                </p>
+              </div>
+              <div data-reveal class="rounded-xl bg-ink-925 outline-1 -outline-offset-1 outline-white/10">
+                <div class="flex items-center justify-between border-b border-white/10 px-4 py-2">
+                  <p class="font-mono text-xs tracking-wide text-zinc-500 uppercase">Guards</p>
+                  <p class="font-mono text-xs text-zinc-600 tabular-nums">04 / 05</p>
+                </div>
+                <ul role="list" class="divide-y divide-white/5 p-2">
+                  <li class="flex items-start gap-2.5 px-3 py-2.5">
+                    <svg viewBox="0 0 16 16" class="size-4 h-lh shrink-0 fill-emerald-400" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z" clip-rule="evenodd" />
+                    </svg>
+                    <p class="min-w-0 font-mono text-xs text-zinc-400">snap: sheet number matches the corner-most label</p>
+                  </li>
+                  <li class="flex items-start gap-2.5 px-3 py-2.5">
+                    <svg viewBox="0 0 16 16" class="size-4 h-lh shrink-0 fill-emerald-400" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z" clip-rule="evenodd" />
+                    </svg>
+                    <p class="min-w-0 font-mono text-xs text-zinc-400">guard: E- prefix agrees with the electrical discipline</p>
+                  </li>
+                  <li class="flex items-start gap-2.5 px-3 py-2.5">
+                    <svg viewBox="0 0 16 16" class="size-4 h-lh shrink-0 fill-emerald-400" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z" clip-rule="evenodd" />
+                    </svg>
+                    <p class="min-w-0 font-mono text-xs text-zinc-400">rotation: 90° stamp detected, labels read in place</p>
+                  </li>
+                  <li class="flex items-start gap-2.5 px-3 py-2.5">
+                    <svg viewBox="0 0 16 16" class="size-4 h-lh shrink-0 fill-emerald-400" aria-hidden="true">
+                      <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14Zm3.844-8.791a.75.75 0 0 0-1.188-.918l-3.7 4.79-1.649-1.833a.75.75 0 1 0-1.114 1.004l2.25 2.5a.75.75 0 0 0 1.15-.043l4.25-5.5Z" clip-rule="evenodd" />
+                    </svg>
+                    <p class="min-w-0 font-mono text-xs text-zinc-400">cross-check: title agrees with the set's drawing index</p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Step 5: review the uncertain -->
+            <div class="grid items-center gap-x-8 gap-y-8 lg:grid-cols-2">
+              <div data-reveal>
+                <p class="font-mono text-xs text-zinc-600 tabular-nums">05</p>
+                <h3 class="mt-2 text-xl font-semibold tracking-tight text-white">You review only the uncertain</h3>
+                <p class="mt-3 max-w-[52ch] text-base/7 text-pretty text-zinc-400">
+                  Sheets that clear the confidence bar are done. The rest queue for a side-by-side check that takes seconds — and a bad read
+                  refunds its credit automatically, no questions asked.
+                </p>
+              </div>
+              <div data-reveal class="rounded-xl bg-ink-925 outline-1 -outline-offset-1 outline-white/10">
+                <div class="flex items-center justify-between border-b border-white/10 px-4 py-2">
+                  <p class="font-mono text-xs tracking-wide text-zinc-500 uppercase">Review queue</p>
+                  <p class="font-mono text-xs text-zinc-600 tabular-nums">05 / 05</p>
+                </div>
+                <div class="p-5">
+                  <div class="flex items-center gap-3 rounded-lg border border-amber-400/30 bg-amber-400/5 px-4 py-3">
+                    <p class="shrink-0 font-mono text-[0.8125rem] font-medium text-nectar-400 tabular-nums">E-101</p>
+                    <p class="min-w-0 flex-1 truncate text-[0.8125rem] text-zinc-300">LIGHTING PLAN, LEVEL 1</p>
+                    <p class="shrink-0 rounded-full bg-amber-400/10 px-2 py-0.5 text-xs font-medium text-amber-300">Review</p>
+                  </div>
+                  <p class="mt-3 font-mono text-xs text-zinc-500">wrong read? report it — the credit comes back automatically</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Review loop -->
+      <section id="review" class="border-b border-white/10 scroll-mt-16">
+        <div class="mx-auto max-w-6xl px-6 py-20 sm:py-24">
+          <div class="grid items-center gap-x-8 gap-y-12 lg:grid-cols-2">
+            <div>
+              <p class="font-mono text-xs font-medium tracking-wide text-nectar-400 uppercase">The review loop</p>
+              <h2 class="mt-4 max-w-[40ch] text-3xl font-semibold tracking-tight text-balance text-white">
+                Built for the person doing 400 sheets before lunch.
+              </h2>
+              <p class="mt-4 max-w-[52ch] text-lg text-pretty text-zinc-400">
+                The viewer snaps straight to the title block, the extracted fields sit beside it, and the whole confirm loop runs from the
+                keyboard. Bluebeam and Acrobat muscle memory carries over.
+              </p>
+              <dl class="mt-8 flex flex-col gap-4 text-sm">
+                <div class="flex items-baseline gap-4">
+                  <dt class="flex w-28 shrink-0 items-center gap-1"><kbd class="keycap">⌘</kbd><kbd class="keycap">Enter</kbd></dt>
+                  <dd class="text-base/7 text-zinc-400 sm:text-sm/6"><span class="font-medium text-white">Accept &amp; next.</span> The entire loop — no mouse, no Tab key.</dd>
+                </div>
+                <div class="flex items-baseline gap-4">
+                  <dt class="flex w-28 shrink-0 items-center gap-1"><kbd class="keycap">Enter</kbd></dt>
+                  <dd class="text-base/7 text-zinc-400 sm:text-sm/6">Confirm a field and move to the same field on the next sheet.</dd>
+                </div>
+                <div class="flex items-baseline gap-4">
+                  <dt class="flex w-28 shrink-0 items-center gap-1"><kbd class="keycap">⌘</kbd><kbd class="keycap">↑</kbd><kbd class="keycap">↓</kbd></dt>
+                  <dd class="text-base/7 text-zinc-400 sm:text-sm/6">Jump between sheets without leaving the field you're in.</dd>
+                </div>
+                <div class="flex items-baseline gap-4">
+                  <dt class="flex w-28 shrink-0 items-center gap-1"><kbd class="keycap">?</kbd></dt>
+                  <dd class="text-base/7 text-zinc-400 sm:text-sm/6">Every shortcut, on screen.</dd>
+                </div>
+              </dl>
+            </div>
+
+            <!-- Viewer mockup: OCR overlay click-to-fill -->
+            <div data-reveal class="plot-corners overflow-hidden rounded-xl bg-ink-925 outline-1 -outline-offset-1 outline-white/10">
+              <div class="flex items-center justify-between border-b border-white/10 px-4 py-2">
+                <p class="font-mono text-xs tracking-wide text-zinc-500 uppercase">scan_0044.pdf</p>
+                <p class="font-mono text-xs text-zinc-600">click any OCR line to fill the field</p>
+              </div>
+              <div class="grid sm:grid-cols-[3fr_2fr]">
+                <!-- drawing pane -->
+                <div class="relative border-white/10 p-4 max-sm:border-b sm:border-r">
+                  <svg viewBox="0 0 300 210" class="w-full" aria-hidden="true">
+                    <rect x="8" y="8" width="284" height="194" class="fill-none stroke-white/15" />
+                    <rect x="24" y="24" width="150" height="90" class="fill-none stroke-white/25" />
+                    <rect x="24" y="130" width="70" height="50" class="fill-none stroke-white/25" />
+                    <line x1="174" y1="50" x2="240" y2="50" class="stroke-white/15" />
+                    <line x1="174" y1="80" x2="240" y2="80" class="stroke-white/15" />
+                    <line x1="99" y1="114" x2="99" y2="130" class="stroke-white/15" />
+                    <circle cx="210" cy="120" r="18" class="fill-none stroke-white/20" />
+                    <line x1="24" y1="192" x2="120" y2="192" class="stroke-white/10" stroke-dasharray="4 3" />
+                  </svg>
+                  <!-- title block overlay, lower right -->
+                  <div class="absolute right-6 bottom-6 flex flex-col gap-1 rounded-sm border border-white/20 bg-ink-950/80 p-2">
+                    <p class="ocr-pick rounded-xs px-1 font-mono text-[0.6875rem] text-zinc-400">LIGHTING PLAN, LEVEL 1</p>
+                    <p class="rounded-xs px-1 font-mono text-[0.6875rem] text-zinc-500">RIVERSIDE MEDICAL CENTER</p>
+                    <p class="rounded-xs px-1 text-right font-mono text-sm font-medium text-zinc-300 tabular-nums">E-101</p>
+                  </div>
+                </div>
+                <!-- fields pane -->
+                <div class="flex flex-col gap-4 p-4">
+                  <div>
+                    <p class="font-mono text-xs tracking-wide text-zinc-500 uppercase">Sheet number</p>
+                    <p class="mt-1.5 rounded-md bg-white/5 px-2.5 py-1.5 font-mono text-[0.8125rem] text-zinc-200 tabular-nums inset-ring inset-ring-white/10">E-101</p>
+                  </div>
+                  <div>
+                    <p class="font-mono text-xs tracking-wide text-zinc-500 uppercase">Sheet title</p>
+                    <div class="mt-1.5 flex min-h-8 items-center rounded-md bg-white/5 px-2.5 py-1.5 inset-ring inset-ring-nectar-400/40">
+                      <p class="field-fill truncate font-mono text-[0.8125rem] text-zinc-200">LIGHTING PLAN, LEVEL 1</p>
+                    </div>
+                  </div>
+                  <p class="mt-auto flex items-center gap-1.5 font-mono text-xs text-zinc-500">
+                    <kbd class="keycap">⌘</kbd><kbd class="keycap">Enter</kbd><span class="ml-1">Accept &amp; next</span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Output -->
+      <section id="output" class="border-b border-white/10 scroll-mt-16">
+        <div class="mx-auto max-w-6xl px-6 py-20 sm:py-24">
+          <p class="font-mono text-xs font-medium tracking-wide text-nectar-400 uppercase">The output</p>
+          <h2 class="mt-4 max-w-[40ch] text-3xl font-semibold tracking-tight text-balance text-white">Your files, named your way.</h2>
+          <p class="mt-4 max-w-[52ch] text-lg text-pretty text-zinc-400">
+            Build the naming template once — drag the pieces into order — and every set after that comes out to the same standard.
+          </p>
+
+          <div data-reveal class="mt-12 rounded-xl bg-ink-925 outline-1 -outline-offset-1 outline-white/10">
+            <div class="flex items-center justify-between border-b border-white/10 px-4 py-2">
+              <p class="font-mono text-xs tracking-wide text-zinc-500 uppercase">Filename template</p>
+            </div>
+            <div class="p-5">
+              <div class="flex flex-wrap items-center gap-1.5 rounded-lg bg-ink-950 px-3 py-2.5 inset-ring inset-ring-white/10">
+                <p class="rounded-md bg-nectar-400/10 px-2 py-0.5 font-mono text-xs text-nectar-300">{prefix}</p>
+                <p class="font-mono text-xs text-zinc-500">_</p>
+                <p class="rounded-md bg-nectar-400/10 px-2 py-0.5 font-mono text-xs text-nectar-300">{sheet_number}</p>
+                <p class="font-mono text-xs text-zinc-500">-</p>
+                <p class="rounded-md bg-nectar-400/10 px-2 py-0.5 font-mono text-xs text-nectar-300">{sheet_title}</p>
+              </div>
+              <div class="mt-4 flex flex-col gap-1.5">
+                <p class="truncate font-mono text-xs text-zinc-400">007_E-101 - Lighting Plan, Level 1.pdf</p>
+                <p class="truncate font-mono text-xs text-zinc-400">008_E-201 - Power Plan, Level 2.pdf</p>
+                <p class="truncate font-mono text-xs text-zinc-600">collisions de-duplicated · names sanitized for Windows and macOS</p>
+              </div>
+            </div>
+          </div>
+
+          <dl class="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-3">
+            <div data-reveal>
+              <dt class="text-base font-medium text-white">Renames in place</dt>
+              <dd class="mt-2 text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                Your originals are renamed on disk — never copied, never re-saved, bytes untouched.
+              </dd>
+            </div>
+            <div data-reveal class="[--reveal-delay:0.1s]">
+              <dt class="text-base font-medium text-white">Exports searchable copies</dt>
+              <dd class="mt-2 text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                A managed folder of OCR'd, text-searchable PDFs named by the same template, with viewer rotation baked in.
+              </dd>
+            </div>
+            <div data-reveal class="[--reveal-delay:0.2s]">
+              <dt class="text-base font-medium text-white">Goes hands-off when you're ready</dt>
+              <dd class="mt-2 text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                Trust a set? Turn on auto-accept for high-confidence reads, auto-rename, and auto-export.
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- Security & residency -->
+      <section id="security" class="border-b border-white/10 scroll-mt-16">
+        <div class="mx-auto max-w-6xl px-6 py-20 sm:py-24">
+          <p class="font-mono text-xs font-medium tracking-wide text-nectar-400 uppercase">Security &amp; data residency</p>
+          <h2 class="mt-4 max-w-[40ch] text-3xl font-semibold tracking-tight text-balance text-white">
+            Built to pass your client's security review.
+          </h2>
+          <p class="mt-4 max-w-[52ch] text-lg text-pretty text-zinc-400">
+            You're handling other people's drawings. Here's exactly what happens to them — written to be pasted straight into the IT-approval
+            email.
+          </p>
+          <dl class="mt-12 grid gap-x-8 gap-y-10 sm:grid-cols-2">
+            <div data-reveal>
+              <dt class="text-base font-medium text-white">In-network AI</dt>
+              <dd class="mt-2 max-w-[56ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                Extraction runs on AI models hosted inside our own cloud account. Your documents are never sent to a third-party AI vendor,
+                and they are never used to train models.
+              </dd>
+            </div>
+            <div data-reveal class="[--reveal-delay:0.1s]">
+              <dt class="text-base font-medium text-white">Purged within 72 hours</dt>
+              <dd class="mt-2 max-w-[56ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                Uploaded PDFs are deleted from our storage within 72 hours of processing, with a hard 30-day backstop. We keep the extracted
+                fields — never your drawings.
+              </dd>
+            </div>
+            <div data-reveal>
+              <dt class="text-base font-medium text-white">US and Canadian data planes</dt>
+              <dd class="mt-2 max-w-[56ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                Your account is pinned to a region. Documents, OCR, and the document database stay in-region — United States or Canada, your
+                call at signup.
+              </dd>
+            </div>
+            <div data-reveal class="[--reveal-delay:0.1s]">
+              <dt class="text-base font-medium text-white">Non-destructive by design</dt>
+              <dd class="mt-2 max-w-[56ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                Nectar renames in place and exports copies. It never deletes files from your disk and never rewrites a drawing's contents.
+                Installers are signed and notarized, with cryptographically verified auto-updates.
+              </dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section id="faq" class="border-b border-white/10 scroll-mt-16">
+        <div class="mx-auto max-w-6xl px-6 py-20 sm:py-24">
+          <div class="grid gap-x-8 gap-y-10 lg:grid-cols-[2fr_3fr]">
+            <div>
+              <p class="font-mono text-xs font-medium tracking-wide text-nectar-400 uppercase">FAQ</p>
+              <h2 class="mt-4 max-w-[40ch] text-3xl font-semibold tracking-tight text-balance text-white">Common questions.</h2>
+              <p class="mt-4 max-w-[48ch] text-lg text-pretty text-zinc-400">
+                Something else on your mind? Ask it in the beta request and we'll answer directly.
+              </p>
+            </div>
+            <div class="flex flex-col divide-y divide-white/10 border-y border-white/10">
+              <details class="group py-5">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-medium text-white [&::-webkit-details-marker]:hidden">
+                  What does Nectar cost during the beta?
+                  <svg viewBox="0 0 16 16" class="size-4 shrink-0 fill-zinc-400 group-open:rotate-45" aria-hidden="true">
+                    <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                  </svg>
+                </summary>
+                <p class="mt-3 max-w-[64ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                  Nothing. Beta licenses are free and come with a credit grant — one credit covers one file, end to end. We'll work out fair
+                  pricing with beta users before launch.
+                </p>
+              </details>
+              <details class="group py-5">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-medium text-white [&::-webkit-details-marker]:hidden">
+                  What happens when it reads a sheet wrong?
+                  <svg viewBox="0 0 16 16" class="size-4 shrink-0 fill-zinc-400 group-open:rotate-45" aria-hidden="true">
+                    <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                  </svg>
+                </summary>
+                <p class="mt-3 max-w-[64ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                  You fix it in seconds — the sheet and its fields sit side by side, and clicking any OCR line drops that text straight into
+                  the field. Report a bad extraction and the credit is refunded automatically.
+                </p>
+              </details>
+              <details class="group py-5">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-medium text-white [&::-webkit-details-marker]:hidden">
+                  What kinds of sets does it handle?
+                  <svg viewBox="0 0 16 16" class="size-4 shrink-0 fill-zinc-400 group-open:rotate-45" aria-hidden="true">
+                    <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                  </svg>
+                </summary>
+                <p class="mt-3 max-w-[64ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                  The messy real-world ones: large-format scans, as-builts, sheets that are rotated, skewed, or hand-stamped, and
+                  non-standard title blocks. That's the corpus it's built and tested against.
+                </p>
+              </details>
+              <details class="group py-5">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-medium text-white [&::-webkit-details-marker]:hidden">
+                  What happens to my files?
+                  <svg viewBox="0 0 16 16" class="size-4 shrink-0 fill-zinc-400 group-open:rotate-45" aria-hidden="true">
+                    <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                  </svg>
+                </summary>
+                <p class="mt-3 max-w-[64ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                  On your machine: originals are renamed in place, exports are separate copies, and nothing is ever deleted. In our cloud:
+                  processing copies are purged within 72 hours.
+                </p>
+              </details>
+              <details class="group py-5">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-medium text-white [&::-webkit-details-marker]:hidden">
+                  Which platforms does it run on?
+                  <svg viewBox="0 0 16 16" class="size-4 shrink-0 fill-zinc-400 group-open:rotate-45" aria-hidden="true">
+                    <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                  </svg>
+                </summary>
+                <p class="mt-3 max-w-[64ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                  Native desktop apps for Windows (x64) and macOS (universal). Installers are signed and notarized, and updates install
+                  themselves silently after cryptographic verification.
+                </p>
+              </details>
+              <details class="group py-5">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-medium text-white [&::-webkit-details-marker]:hidden">
+                  How does licensing work?
+                  <svg viewBox="0 0 16 16" class="size-4 shrink-0 fill-zinc-400 group-open:rotate-45" aria-hidden="true">
+                    <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                  </svg>
+                </summary>
+                <p class="mt-3 max-w-[64ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                  Per-seat license keys, one machine per seat. You manage seats yourself in the customer console — add one, release one, or
+                  move a seat to a new computer without emailing anyone.
+                </p>
+              </details>
+              <details class="group py-5">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-medium text-white [&::-webkit-details-marker]:hidden">
+                  Can our data stay in Canada?
+                  <svg viewBox="0 0 16 16" class="size-4 shrink-0 fill-zinc-400 group-open:rotate-45" aria-hidden="true">
+                    <path d="M8.75 3.75a.75.75 0 0 0-1.5 0v3.5h-3.5a.75.75 0 0 0 0 1.5h3.5v3.5a.75.75 0 0 0 1.5 0v-3.5h3.5a.75.75 0 0 0 0-1.5h-3.5v-3.5Z" />
+                  </svg>
+                </summary>
+                <p class="mt-3 max-w-[64ch] text-base/7 text-pretty text-zinc-400 sm:text-sm/6">
+                  Yes. Canadian accounts run on a dedicated Canadian data plane — documents, OCR, and the document database stay in Canada.
+                  Ask about residency in your beta request and we'll set your account up on the right plane.
+                </p>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Beta access form -->
-      <section id="beta" class="py-20">
-        <div class="mx-auto max-w-6xl px-6">
-          <div class="mx-auto max-w-xl text-center">
-            <h2 class="text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">Request beta access</h2>
-            <p class="mx-auto mt-4 max-w-[48ch] text-lg text-pretty text-zinc-400">Tell us about your shop and the sets you process, and we'll send a license key. We usually reply within one business day.</p>
+      <section id="beta" class="scroll-mt-16">
+        <div class="mx-auto max-w-6xl px-6 py-20 sm:py-24">
+          <div class="mx-auto text-center">
+            <p class="font-mono text-xs font-medium tracking-wide text-nectar-400 uppercase">Beta access</p>
+            <h2 class="mx-auto mt-4 max-w-[35ch] text-3xl font-semibold tracking-tight text-balance text-white sm:text-4xl">
+              Put your next set through it.
+            </h2>
+            <p class="mx-auto mt-4 max-w-[48ch] text-lg text-pretty text-zinc-400">
+              Tell us about your shop and the sets you process, and we'll send a license key. We usually reply within one business day.
+            </p>
           </div>
 
           <!-- HubSpot embedded form (portal 21331419, form 89b6dbc1-6fa0-4b65-89ec-6890d525f89f).
@@ -198,18 +709,36 @@
       </section>
 
       <!-- Footer -->
-      <footer class="border-t border-white/10 py-10">
-        <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 px-6 sm:flex-row">
-          <a href="/" aria-label="Homepage" class="flex items-center gap-2.5">
-            <img src="/nectar-logo.svg" alt="" class="size-6" />
-            <span class="text-base font-semibold tracking-tight text-white">Nectar</span>
-          </a>
-          <nav class="flex items-center gap-6 text-sm">
-            <a href="/download.html" class="font-normal text-zinc-400 hover:text-white">Download</a>
-            <a href="/tos.html" class="font-normal text-zinc-400 hover:text-white">Terms</a>
-            <a href="/privacy.html" class="font-normal text-zinc-400 hover:text-white">Privacy</a>
-          </nav>
-          <p class="text-sm text-zinc-500">© 2026 Signature Tech Studio, Inc.</p>
+      <footer class="border-t border-white/10">
+        <div class="mx-auto max-w-6xl px-6 py-14">
+          <div class="grid gap-x-8 gap-y-10 sm:grid-cols-[2fr_1fr_1fr]">
+            <div>
+              <a href="/" aria-label="Homepage" class="inline-flex items-center gap-2.5">
+                <img src="/nectar-logo.svg" alt="" class="h-6 shrink-0" />
+                <span class="text-base font-semibold tracking-tight text-white">Nectar</span>
+              </a>
+              <p class="mt-3 max-w-[40ch] text-base/7 text-pretty text-zinc-500 sm:text-sm/6">
+                Automatic title-block extraction for construction drawings. Built by Signature Tech Studio.
+              </p>
+            </div>
+            <nav aria-label="Product" class="text-sm">
+              <p class="font-mono text-xs tracking-wide text-zinc-500 uppercase">Product</p>
+              <ul role="list" class="mt-4 flex flex-col gap-3">
+                <li><a href="#how" class="font-normal text-zinc-400 hover:text-white">How it works</a></li>
+                <li><a href="#review" class="font-normal text-zinc-400 hover:text-white">The review loop</a></li>
+                <li><a href="#security" class="font-normal text-zinc-400 hover:text-white">Security</a></li>
+                <li><a href="/download.html" class="font-normal text-zinc-400 hover:text-white">Download</a></li>
+              </ul>
+            </nav>
+            <nav aria-label="Legal" class="text-sm">
+              <p class="font-mono text-xs tracking-wide text-zinc-500 uppercase">Legal</p>
+              <ul role="list" class="mt-4 flex flex-col gap-3">
+                <li><a href="/tos.html" class="font-normal text-zinc-400 hover:text-white">Terms of service</a></li>
+                <li><a href="/privacy.html" class="font-normal text-zinc-400 hover:text-white">Privacy policy</a></li>
+              </ul>
+            </nav>
+          </div>
+          <p class="mt-12 border-t border-white/5 pt-6 text-sm text-zinc-500">© 2026 Signature Tech Studio, Inc.</p>
         </div>
       </footer>
     </div>

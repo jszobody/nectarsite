@@ -1,18 +1,178 @@
 @import "tailwindcss";
 
 /* Brand tokens for Nectar, sampled from the honeycomb logo:
-   orange→gold gradient (#FF8000 → #FFCC00) and the slate "ink" (#435363). */
+   orange→gold gradient (#FF8000 → #FFCC00) and the slate "ink" (#435363).
+   The ink scale extends darker than the logo slate so the page canvas can sit
+   below the app-window mockups and cards. */
 @theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
   --color-nectar-50: #fff8eb;
   --color-nectar-100: #ffedcc;
   --color-nectar-200: #ffd98a;
-  --color-nectar-300: #ffcc00;  /* gold gradient stop */
+  --color-nectar-300: #ffcc00; /* gold gradient stop */
   --color-nectar-400: #ffa31f;
   --color-nectar-500: #ff8900;
-  --color-nectar-600: #ff8000;  /* orange gradient stop */
+  --color-nectar-600: #ff8000; /* orange gradient stop */
   --color-nectar-700: #d96a00;
+
+  --color-ink-500: #64778e;
   --color-ink-600: #54657a;
-  --color-ink-700: #435363;     /* logo slate */
+  --color-ink-700: #435363; /* logo slate */
   --color-ink-800: #36434f;
+  --color-ink-850: #2b3641;
   --color-ink-900: #232c35;
+  --color-ink-925: #1a2129;
+  --color-ink-950: #12181f;
+}
+
+/* Faint drafting grid, one step subtler than a blueprint. */
+@utility drafting-grid {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Crosshair ticks on the corners of a drawing-sheet style frame. */
+@utility plot-corners {
+  position: relative;
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    border: 0 solid rgb(255 255 255 / 0.25);
+  }
+  &::before {
+    top: -1px;
+    left: -1px;
+    border-top-width: 1px;
+    border-left-width: 1px;
+  }
+  &::after {
+    right: -1px;
+    bottom: -1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+  }
+}
+
+/* Keyboard keycap chip. */
+@utility keycap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: --spacing(6);
+  padding: --spacing(0.5) --spacing(1.5);
+  border-radius: var(--radius-md);
+  border: 1px solid rgb(255 255 255 / 0.15);
+  border-bottom-width: 2px;
+  background-color: rgb(255 255 255 / 0.06);
+  font-family: var(--font-mono);
+  color: var(--color-zinc-200);
+}
+
+/* Scroll reveals: hidden state is applied by JS (so no-JS users lose nothing)
+   and only when the user allows motion. */
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      translate 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+  [data-reveal].reveal-hidden {
+    opacity: 0;
+    translate: 0 --spacing(4);
+  }
+}
+
+/* Demo table transitions (driven by src/demo.js). */
+.demo-cell-swap {
+  transition: opacity 0.35s ease;
+}
+.demo-cell-swap.is-swapping {
+  opacity: 0;
+}
+
+@keyframes demo-caret {
+  50% {
+    opacity: 0;
+  }
+}
+.demo-caret::after {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 1em;
+  vertical-align: text-bottom;
+  background-color: var(--color-nectar-400);
+  animation: demo-caret 0.9s step-end infinite;
+}
+
+/* OCR scan sweep used in the pipeline OCR step. */
+@keyframes scan-sweep {
+  0%,
+  15% {
+    top: 0;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  85%,
+  100% {
+    top: calc(100% - 2px);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .scan-line {
+    animation: scan-sweep 4s ease-in-out infinite;
+  }
+}
+
+/* Review-loop viewer: OCR line highlight and field fill run on one shared
+   8s clock so the "click a line → field fills" story stays in sync. */
+@keyframes ocr-pick {
+  0%,
+  20% {
+    background-color: transparent;
+    outline-color: transparent;
+  }
+  28%,
+  70% {
+    background-color: rgb(255 163 31 / 0.2);
+    outline-color: rgb(255 163 31 / 0.6);
+  }
+  78%,
+  100% {
+    background-color: transparent;
+    outline-color: transparent;
+  }
+}
+@keyframes field-fill {
+  0%,
+  30% {
+    opacity: 0;
+  }
+  38%,
+  100% {
+    opacity: 1;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .ocr-pick {
+    outline: 1px solid transparent;
+    animation: ocr-pick 8s ease-in-out infinite;
+  }
+  .field-fill {
+    animation: field-fill 8s ease-in-out infinite;
+  }
 }
