@@ -57,8 +57,10 @@ hands → what you get out → why you can trust it → FAQ → request access.
    cloud, no third-party AI vendors, never trains models) · 72-hour purge ·
    US + Canada data planes (account pinned to region) · non-destructive by design
    + signed/notarized builds. Written to survive an IT-approval email screenshot.
-8. **FAQ** — 6–8: free during beta, credits & refund-on-miss, platforms,
-   seats/licensing, what happens to files, what sets it handles, Canada.
+8. **FAQ** — 6–8: usage-based pricing (credits only, pay for what you process,
+   volume discounts — never "free during beta", some users already pay), credits
+   & refund-on-miss, platforms, seats/licensing, what happens to files, what
+   sets it handles, Canada.
 9. **Beta form** — restyled HubSpot embed + one-business-day promise.
 10. **Footer** — columns: product, legal, company (Signature Tech Studio).
 
