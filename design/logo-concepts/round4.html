@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nectar N mark · round 4</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+      body { margin: 0; background: #12181f; color: #d4d4d8; font-family: Geist, sans-serif; padding: 40px; }
+      h1 { color: #fff; font-size: 22px; font-weight: 600; margin: 0 0 6px; }
+      .sub { color: #71717a; font-size: 14px; margin: 0 0 32px; }
+      .row { display: grid; grid-template-columns: 230px 1fr; gap: 24px; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding: 26px 0; }
+      .label { font-size: 15px; color: #fff; font-weight: 600; }
+      .label small { display: block; color: #71717a; font-weight: 400; font-size: 12px; margin-top: 4px; line-height: 1.45; }
+      .sizes { display: flex; align-items: center; gap: 36px; flex-wrap: wrap; }
+      .cell { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+      .cell span { font-size: 11px; color: #52525b; font-family: monospace; }
+      .light { background: #f4f4f5; border-radius: 10px; padding: 10px; display: flex; align-items: center; gap: 8px; }
+      .lockup { display: flex; align-items: center; gap: 10px; }
+      .lockup b { color: #fff; font-size: 20px; font-weight: 600; letter-spacing: -0.02em; }
+      svg.mark { display: block; }
+    </style>
+  </head>
+  <body>
+    <h1>Round 4 · the comb cell, pressed</h1>
+    <p class="sub">Double-wall cell, N pressed into the comb. Dark vs white, angular vs slightly rounded. R4a is the unchanged finalist from round 3.</p>
+
+    <svg width="0" height="0" style="position:absolute">
+      <defs>
+        <linearGradient id="g-hex" x1="0" y1="0" x2="0.35" y2="1">
+          <stop offset="0" stop-color="#FFC400"/><stop offset="1" stop-color="#F06D00"/>
+        </linearGradient>
+        <linearGradient id="g-hexsheen" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#FFF" stop-opacity="0.35"/><stop offset="0.4" stop-color="#FFF" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="g-carve" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#A34700"/><stop offset="1" stop-color="#7A3300"/>
+        </linearGradient>
+        <linearGradient id="g-whiteN" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#FFF7EA"/><stop offset="1" stop-color="#FFE3B3"/>
+        </linearGradient>
+
+        <!-- shared cell: pointy-top, double wall -->
+        <symbol id="cellbase" viewBox="0 0 100 100">
+          <path d="M50 3 L90 26 V74 L50 97 L10 74 V26 Z" fill="url(#g-hex)"/>
+          <path d="M50 3 L90 26 V74 L50 97 L10 74 V26 Z" fill="url(#g-hexsheen)"/>
+          <path d="M50 12 L82 30.5 V69.5 L50 88 L18 69.5 V30.5 Z" fill="none" stroke="#FFF" stroke-opacity="0.3" stroke-width="3"/>
+        </symbol>
+
+        <!-- R4a: finalist from round 3 — dark angular pressed N -->
+        <symbol id="r4a" viewBox="0 0 100 100">
+          <use href="#cellbase"/>
+          <path d="M34 70 V30 H43 L57 54 V30 H66 V70 H57 L43 46 V70 Z" transform="translate(0,1.5)" fill="#FFDB80" fill-opacity="0.55"/>
+          <path d="M34 70 V30 H43 L57 54 V30 H66 V70 H57 L43 46 V70 Z" fill="url(#g-carve)"/>
+        </symbol>
+
+        <!-- R4b: white pressed, angular -->
+        <symbol id="r4b" viewBox="0 0 100 100">
+          <use href="#cellbase"/>
+          <path d="M34 70 V30 H43 L57 54 V30 H66 V70 H57 L43 46 V70 Z" fill="#8C3A00" fill-opacity="0.6"/>
+          <path d="M34 70 V30 H43 L57 54 V30 H66 V70 H57 L43 46 V70 Z" transform="translate(0,1.6)" fill="url(#g-whiteN)"/>
+        </symbol>
+
+        <!-- R4c: white pressed, slightly rounded (join radius ~2.5) -->
+        <symbol id="r4c" viewBox="0 0 100 100">
+          <use href="#cellbase"/>
+          <g stroke-linejoin="round" stroke-linecap="round">
+            <path d="M35 69 V31 H43 L57 53 V31 H65 V69 H57 L43 47 V69 Z" fill="#8C3A00" stroke="#8C3A00" stroke-width="5" fill-opacity="0.6" stroke-opacity="0.6"/>
+            <path d="M35 69 V31 H43 L57 53 V31 H65 V69 H57 L43 47 V69 Z" transform="translate(0,1.6)" fill="url(#g-whiteN)" stroke="url(#g-whiteN)" stroke-width="5"/>
+          </g>
+        </symbol>
+
+        <!-- R4d: dark pressed, slightly rounded -->
+        <symbol id="r4d" viewBox="0 0 100 100">
+          <use href="#cellbase"/>
+          <g stroke-linejoin="round" stroke-linecap="round">
+            <path d="M35 69 V31 H43 L57 53 V31 H65 V69 H57 L43 47 V69 Z" transform="translate(0,1.5)" fill="#FFDB80" stroke="#FFDB80" stroke-width="5" fill-opacity="0.55" stroke-opacity="0.55"/>
+            <path d="M35 69 V31 H43 L57 53 V31 H65 V69 H57 L43 47 V69 Z" fill="url(#g-carve)" stroke="url(#g-carve)" stroke-width="5"/>
+          </g>
+        </symbol>
+
+        <!-- R4e: white pressed, a step rounder (join radius ~4) -->
+        <symbol id="r4e" viewBox="0 0 100 100">
+          <use href="#cellbase"/>
+          <g stroke-linejoin="round" stroke-linecap="round">
+            <path d="M36 68 V32 H43.5 L56.5 52 V32 H64 V68 H56.5 L43.5 48 V68 Z" fill="#8C3A00" stroke="#8C3A00" stroke-width="8" fill-opacity="0.6" stroke-opacity="0.6"/>
+            <path d="M36 68 V32 H43.5 L56.5 52 V32 H64 V68 H56.5 L43.5 48 V68 Z" transform="translate(0,1.6)" fill="url(#g-whiteN)" stroke="url(#g-whiteN)" stroke-width="8"/>
+          </g>
+        </symbol>
+      </defs>
+    </svg>
+
+    <div id="rows"></div>
+
+    <script>
+      const CONCEPTS = [
+        ["r4a", "R4a · Finalist (dark, angular)", "Unchanged from round 3: N carved into the comb, light catching the bottom edge."],
+        ["r4b", "R4b · White, angular", "Same press, same shadowed top edge, but the N is warm white with a faint honey tint."],
+        ["r4c", "R4c · White, soft corners", "White pressed N with slight corner rounding, about a 2.5px radius at this scale."],
+        ["r4d", "R4d · Dark, soft corners", "The finalist letterform, softened by the same amount."],
+        ["r4e", "R4e · White, rounder still", "One step further, about a 4px radius, to calibrate where 'slightly' ends."],
+      ];
+      const SIZES = [128, 48, 24, 16];
+      const rows = document.getElementById("rows");
+      for (const [id, name, note] of CONCEPTS) {
+        const mark = (s) => '<svg class="mark" width="' + s + '" height="' + s + '"><use href="#' + id + '"/></svg>';
+        rows.insertAdjacentHTML("beforeend",
+          '<div class="row"><div class="label">' + name + '<small>' + note + '</small></div>' +
+          '<div class="sizes">' +
+          SIZES.map((s) => '<div class="cell">' + mark(s) + '<span>' + s + '</span></div>').join("") +
+          '<div class="cell"><div class="lockup">' + mark(32) + '<b>Nectar</b></div><span>header lockup</span></div>' +
+          '<div class="cell"><div class="light">' + mark(28) + mark(16) + '</div><span>on light</span></div>' +
+          '</div></div>');
+      }
+    </script>
+  </body>
+</html>
