@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nectar N mark · round 2</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+      body { margin: 0; background: #12181f; color: #d4d4d8; font-family: Geist, sans-serif; padding: 40px; }
+      h1 { color: #fff; font-size: 22px; font-weight: 600; margin: 0 0 6px; }
+      .sub { color: #71717a; font-size: 14px; margin: 0 0 32px; }
+      .row { display: grid; grid-template-columns: 230px 1fr; gap: 24px; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding: 26px 0; }
+      .label { font-size: 15px; color: #fff; font-weight: 600; }
+      .label small { display: block; color: #71717a; font-weight: 400; font-size: 12px; margin-top: 4px; line-height: 1.45; }
+      .sizes { display: flex; align-items: center; gap: 36px; flex-wrap: wrap; }
+      .cell { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+      .cell span { font-size: 11px; color: #52525b; font-family: monospace; }
+      .light { background: #f4f4f5; border-radius: 10px; padding: 10px; display: flex; align-items: center; gap: 8px; }
+      .lockup { display: flex; align-items: center; gap: 10px; }
+      .lockup b { color: #fff; font-size: 20px; font-weight: 600; letter-spacing: -0.02em; }
+      svg.mark { display: block; }
+    </style>
+  </head>
+  <body>
+    <h1>Round 2 · ribbon, hex, and three fresh riffs</h1>
+    <p class="sub">Refined from C2 (continuous ribbon) and C4 (honeycomb badge), plus new directions. 128 / 48 / 24 / 16 px, lockup, on light.</p>
+
+    <svg width="0" height="0" style="position:absolute">
+      <defs>
+        <!-- shared stem/diagonal gradients for ribbon marks -->
+        <linearGradient id="g-stemL" gradientUnits="userSpaceOnUse" x1="24" y1="24" x2="24" y2="86">
+          <stop offset="0" stop-color="#FFD84D"/><stop offset="1" stop-color="#FF9500"/>
+        </linearGradient>
+        <linearGradient id="g-diag" gradientUnits="userSpaceOnUse" x1="24" y1="24" x2="76" y2="76">
+          <stop offset="0" stop-color="#BE5600"/><stop offset="0.3" stop-color="#FF9E1F"/>
+          <stop offset="0.7" stop-color="#FF9E1F"/><stop offset="1" stop-color="#C25800"/>
+        </linearGradient>
+        <linearGradient id="g-stemR" gradientUnits="userSpaceOnUse" x1="76" y1="76" x2="76" y2="14">
+          <stop offset="0" stop-color="#FF8000"/><stop offset="1" stop-color="#FFC400"/>
+        </linearGradient>
+
+        <!-- R2a: continuous ribbon, symmetric, fold-shaded diagonal -->
+        <symbol id="r2a" viewBox="0 0 100 100">
+          <path d="M76 76 L76 14" stroke="url(#g-stemR)" stroke-width="25" stroke-linecap="round" fill="none"/>
+          <path d="M24 24 L76 76" stroke="url(#g-diag)" stroke-width="25" stroke-linecap="round" fill="none"/>
+          <path d="M24 86 L24 24" stroke="url(#g-stemL)" stroke-width="25" stroke-linecap="round" fill="none"/>
+        </symbol>
+
+        <!-- R2b: sheared flat ribbon (closer to the R's cut ends) -->
+        <linearGradient id="r2b-shL" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#000" stop-opacity="0.3"/><stop offset="1" stop-color="#000" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="r2b-shR" x1="1" y1="0" x2="0" y2="0">
+          <stop offset="0" stop-color="#000" stop-opacity="0.3"/><stop offset="1" stop-color="#000" stop-opacity="0"/>
+        </linearGradient>
+        <symbol id="r2b" viewBox="0 0 100 100">
+          <path d="M13 30 L37 12 L87 70 L63 88 Z" fill="url(#g-diag)"/>
+          <path d="M37 12 L50 27 L37 38 Z" fill="url(#r2b-shL)"/>
+          <path d="M63 88 L50 73 L63 62 Z" fill="url(#r2b-shR)"/>
+          <path d="M13 12 H37 V88 L13 78 Z" fill="url(#g-stemL)"/>
+          <path d="M63 12 L87 22 V88 H63 Z" fill="url(#g-stemR)"/>
+        </symbol>
+
+        <!-- R2c: ribbon with paper-fold highlight edge -->
+        <symbol id="r2c" viewBox="0 0 100 100">
+          <path d="M76 76 L76 14" stroke="url(#g-stemR)" stroke-width="25" stroke-linecap="round" fill="none"/>
+          <path d="M24 24 L76 76" stroke="url(#g-diag)" stroke-width="25" stroke-linecap="round" fill="none"/>
+          <path d="M24 86 L24 24" stroke="url(#g-stemL)" stroke-width="25" stroke-linecap="round" fill="none"/>
+          <path d="M18 82 L18 26" stroke="#FFE680" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/>
+          <path d="M28 20 L78 70" stroke="#FFDA66" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.5"/>
+          <path d="M70 72 L70 18" stroke="#FFE680" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.8"/>
+        </symbol>
+
+        <!-- R2d: flat-top honeycomb cell, angular N knockout -->
+        <linearGradient id="r2d-h" x1="0" y1="0" x2="0.35" y2="1">
+          <stop offset="0" stop-color="#FFC400"/><stop offset="1" stop-color="#F06D00"/>
+        </linearGradient>
+        <linearGradient id="r2d-e" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#FFF" stop-opacity="0.35"/><stop offset="0.4" stop-color="#FFF" stop-opacity="0"/>
+        </linearGradient>
+        <symbol id="r2d" viewBox="0 0 100 100">
+          <path d="M27 8 H73 L96 50 L73 92 H27 L4 50 Z" fill="url(#r2d-h)"/>
+          <path d="M27 8 H73 L96 50 L73 92 H27 L4 50 Z" fill="url(#r2d-e)"/>
+          <path d="M33 71 V29 H42 L58 56 V29 H67 V71 H58 L42 44 V71 Z" fill="#fff"/>
+        </symbol>
+
+        <!-- R2e: double-wall cell -->
+        <symbol id="r2e" viewBox="0 0 100 100">
+          <path d="M50 3 L90 26 V74 L50 97 L10 74 V26 Z" fill="url(#r2d-h)"/>
+          <path d="M50 3 L90 26 V74 L50 97 L10 74 V26 Z" fill="url(#r2d-e)"/>
+          <path d="M50 12 L82 30.5 V69.5 L50 88 L18 69.5 V30.5 Z" fill="none" stroke="#FFF" stroke-opacity="0.35" stroke-width="3"/>
+          <path d="M34 70 V30 H43 L57 54 V30 H66 V70 H57 L43 46 V70 Z" fill="#fff"/>
+        </symbol>
+
+        <!-- R2f: hex + white ribbon N (marriage of C2 and C4) -->
+        <symbol id="r2f" viewBox="0 0 100 100">
+          <path d="M27 8 H73 L96 50 L73 92 H27 L4 50 Z" fill="url(#r2d-h)"/>
+          <path d="M27 8 H73 L96 50 L73 92 H27 L4 50 Z" fill="url(#r2d-e)"/>
+          <g stroke="#fff" stroke-width="11" stroke-linecap="round" fill="none">
+            <path d="M64 62 L64 32"/>
+            <path d="M36 38 L64 62" stroke-opacity="0.85"/>
+            <path d="M36 68 L36 38"/>
+          </g>
+        </symbol>
+
+        <!-- R2g: honey-drip N -->
+        <symbol id="r2g" viewBox="0 0 100 100">
+          <path d="M76 70 L76 14" stroke="url(#g-stemR)" stroke-width="25" stroke-linecap="round" fill="none"/>
+          <path d="M24 24 L76 76" stroke="url(#g-diag)" stroke-width="25" stroke-linecap="round" fill="none"/>
+          <path d="M24 86 L24 24" stroke="url(#g-stemL)" stroke-width="25" stroke-linecap="round" fill="none"/>
+          <path d="M76 64 C69 76 66.5 82 66.5 86.5 A9.5 9.5 0 0 0 85.5 86.5 C85.5 82 83 76 76 64 Z" fill="#F07000"/>
+        </symbol>
+
+        <!-- R2h: squircle tile knockout -->
+        <linearGradient id="r2h-t" x1="0" y1="0" x2="0.3" y2="1">
+          <stop offset="0" stop-color="#FFC833"/><stop offset="1" stop-color="#F06D00"/>
+        </linearGradient>
+        <symbol id="r2h" viewBox="0 0 100 100">
+          <rect x="4" y="4" width="92" height="92" rx="24" fill="url(#r2h-t)"/>
+          <rect x="4" y="4" width="92" height="92" rx="24" fill="url(#r2d-e)"/>
+          <g stroke="#fff" stroke-width="12" stroke-linecap="round" fill="none">
+            <path d="M65 63 L65 31"/>
+            <path d="M35 37 L65 63" stroke-opacity="0.85"/>
+            <path d="M35 69 L35 37"/>
+          </g>
+        </symbol>
+
+        <!-- R2i: glossy tube N (cylindrical shading per segment) -->
+        <linearGradient id="r2i-v1" gradientUnits="userSpaceOnUse" x1="11.5" y1="0" x2="36.5" y2="0">
+          <stop offset="0" stop-color="#E07200"/><stop offset="0.35" stop-color="#FFCC33"/><stop offset="1" stop-color="#D96A00"/>
+        </linearGradient>
+        <linearGradient id="r2i-v2" gradientUnits="userSpaceOnUse" x1="63.5" y1="0" x2="88.5" y2="0">
+          <stop offset="0" stop-color="#E07200"/><stop offset="0.35" stop-color="#FFCC33"/><stop offset="1" stop-color="#D96A00"/>
+        </linearGradient>
+        <linearGradient id="r2i-d" gradientUnits="userSpaceOnUse" x1="33" y1="33" x2="15" y2="51">
+          <stop offset="0" stop-color="#C25800"/><stop offset="0.6" stop-color="#FFB733"/><stop offset="1" stop-color="#C25800"/>
+        </linearGradient>
+        <symbol id="r2i" viewBox="0 0 100 100">
+          <path d="M76 76 L76 14" stroke="url(#r2i-v2)" stroke-width="25" stroke-linecap="round" fill="none"/>
+          <path d="M24 24 L76 76" stroke="url(#r2i-d)" stroke-width="25" stroke-linecap="round" fill="none"/>
+          <path d="M24 86 L24 24" stroke="url(#r2i-v1)" stroke-width="25" stroke-linecap="round" fill="none"/>
+        </symbol>
+      </defs>
+    </svg>
+
+    <div id="rows"></div>
+
+    <script>
+      const CONCEPTS = [
+        ["r2a", "R2a · Ribbon, fold-shaded", "C2 refined: symmetric stems, diagonal darkens into each join so the folds read."],
+        ["r2b", "R2b · Sheared ribbon", "Flat ribbon with cut ends and fold shadows; the most literal cousin of the R."],
+        ["r2c", "R2c · Ribbon, highlight edge", "R2a plus a folded-paper light edge along each segment."],
+        ["r2d", "R2d · Flat-top cell", "C4 refined: honeycomb cells are flat-topped; reads more app-icon."],
+        ["r2e", "R2e · Double-wall cell", "Pointy hex with an inner wall ring, like a comb cell in section."],
+        ["r2f", "R2f · Cell + ribbon N", "The marriage: white ribbon N inside the amber cell."],
+        ["r2g", "R2g · Honey drip", "Ribbon N whose right stem melts into a drip. The most literal 'nectar'."],
+        ["r2h", "R2h · Tile knockout", "Squircle app-tile with the ribbon N knocked out in white."],
+        ["r2i", "R2i · Glossy tube", "Cylindrical shading across each stroke; reads as extruded honey."],
+      ];
+      const SIZES = [128, 48, 24, 16];
+      const rows = document.getElementById("rows");
+      for (const [id, name, note] of CONCEPTS) {
+        const mark = (s) => '<svg class="mark" width="' + s + '" height="' + s + '"><use href="#' + id + '"/></svg>';
+        rows.insertAdjacentHTML("beforeend",
+          '<div class="row"><div class="label">' + name + '<small>' + note + '</small></div>' +
+          '<div class="sizes">' +
+          SIZES.map((s) => '<div class="cell">' + mark(s) + '<span>' + s + '</span></div>').join("") +
+          '<div class="cell"><div class="lockup">' + mark(32) + '<b>Nectar</b></div><span>header lockup</span></div>' +
+          '<div class="cell"><div class="light">' + mark(28) + mark(16) + '</div><span>on light</span></div>' +
+          '</div></div>');
+      }
+    </script>
+  </body>
+</html>
