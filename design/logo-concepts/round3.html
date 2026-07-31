@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nectar N mark · round 3</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600&display=swap" rel="stylesheet" />
+    <style>
+      body { margin: 0; background: #12181f; color: #d4d4d8; font-family: Geist, sans-serif; padding: 40px; }
+      h1 { color: #fff; font-size: 22px; font-weight: 600; margin: 0 0 6px; }
+      .sub { color: #71717a; font-size: 14px; margin: 0 0 32px; }
+      .row { display: grid; grid-template-columns: 230px 1fr; gap: 24px; align-items: center; border-top: 1px solid rgba(255,255,255,0.08); padding: 26px 0; }
+      .label { font-size: 15px; color: #fff; font-weight: 600; }
+      .label small { display: block; color: #71717a; font-weight: 400; font-size: 12px; margin-top: 4px; line-height: 1.45; }
+      .sizes { display: flex; align-items: center; gap: 36px; flex-wrap: wrap; }
+      .cell { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+      .cell span { font-size: 11px; color: #52525b; font-family: monospace; }
+      .light { background: #f4f4f5; border-radius: 10px; padding: 10px; display: flex; align-items: center; gap: 8px; }
+      .lockup { display: flex; align-items: center; gap: 10px; }
+      .lockup b { color: #fff; font-size: 20px; font-weight: 600; letter-spacing: -0.02em; }
+      svg.mark { display: block; }
+    </style>
+  </head>
+  <body>
+    <h1>Round 3 · one true ribbon, richer cells</h1>
+    <p class="sub">The ribbon is now a single continuous path (one silhouette, one gradient, shaded creases). The cell N gets frosted and carved treatments.</p>
+
+    <svg width="0" height="0" style="position:absolute">
+      <defs>
+        <!-- one global gradient across the whole letter -->
+        <linearGradient id="g-rib" gradientUnits="userSpaceOnUse" x1="16" y1="10" x2="88" y2="90">
+          <stop offset="0" stop-color="#FFD84D"/><stop offset="0.45" stop-color="#FFA31F"/><stop offset="1" stop-color="#E86A00"/>
+        </linearGradient>
+        <!-- crease shadows: dark at the fold, fading out along the diagonal -->
+        <linearGradient id="g-fold1" gradientUnits="userSpaceOnUse" x1="24" y1="24" x2="44" y2="44">
+          <stop offset="0" stop-color="#8C3A00" stop-opacity="0.6"/><stop offset="1" stop-color="#8C3A00" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="g-fold2" gradientUnits="userSpaceOnUse" x1="76" y1="76" x2="56" y2="56">
+          <stop offset="0" stop-color="#8C3A00" stop-opacity="0.6"/><stop offset="1" stop-color="#8C3A00" stop-opacity="0"/>
+        </linearGradient>
+
+        <!-- R3a: one continuous ribbon, soft joins -->
+        <symbol id="r3a" viewBox="0 0 100 100">
+          <path d="M24 86 L24 24 L76 76 L76 14" fill="none" stroke="url(#g-rib)" stroke-width="25" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M24 24 L44 44" fill="none" stroke="url(#g-fold1)" stroke-width="25" stroke-linecap="round"/>
+          <path d="M76 76 L56 56" fill="none" stroke="url(#g-fold2)" stroke-width="25" stroke-linecap="round"/>
+        </symbol>
+
+        <!-- R3b: one continuous ribbon, bevel creases + flat-cut ends -->
+        <symbol id="r3b" viewBox="0 0 100 100">
+          <path d="M24 88 L24 24 L76 76 L76 12" fill="none" stroke="url(#g-rib)" stroke-width="25" stroke-linecap="butt" stroke-linejoin="bevel"/>
+          <path d="M24 24 L44 44" fill="none" stroke="url(#g-fold1)" stroke-width="25" stroke-linecap="butt"/>
+          <path d="M76 76 L56 56" fill="none" stroke="url(#g-fold2)" stroke-width="25" stroke-linecap="butt"/>
+        </symbol>
+
+        <!-- cell base -->
+        <linearGradient id="g-hex" x1="0" y1="0" x2="0.35" y2="1">
+          <stop offset="0" stop-color="#FFC400"/><stop offset="1" stop-color="#F06D00"/>
+        </linearGradient>
+        <linearGradient id="g-hexsheen" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#FFF" stop-opacity="0.35"/><stop offset="0.4" stop-color="#FFF" stop-opacity="0"/>
+        </linearGradient>
+        <!-- frosted white: bright at top, translucent at bottom -->
+        <linearGradient id="g-frost" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#FFF" stop-opacity="0.98"/><stop offset="1" stop-color="#FFF" stop-opacity="0.45"/>
+        </linearGradient>
+        <!-- carved: deep amber sinking into the comb -->
+        <linearGradient id="g-carve" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#A34700"/><stop offset="1" stop-color="#7A3300"/>
+        </linearGradient>
+
+        <!-- R3c: flat-top cell + frosted angular N -->
+        <symbol id="r3c" viewBox="0 0 100 100">
+          <path d="M27 8 H73 L96 50 L73 92 H27 L4 50 Z" fill="url(#g-hex)"/>
+          <path d="M27 8 H73 L96 50 L73 92 H27 L4 50 Z" fill="url(#g-hexsheen)"/>
+          <path d="M33 71 V29 H42 L58 56 V29 H67 V71 H58 L42 44 V71 Z" fill="url(#g-frost)"/>
+        </symbol>
+
+        <!-- R3d: double-wall cell + carved (inset) N -->
+        <symbol id="r3d" viewBox="0 0 100 100">
+          <path d="M50 3 L90 26 V74 L50 97 L10 74 V26 Z" fill="url(#g-hex)"/>
+          <path d="M50 3 L90 26 V74 L50 97 L10 74 V26 Z" fill="url(#g-hexsheen)"/>
+          <path d="M50 12 L82 30.5 V69.5 L50 88 L18 69.5 V30.5 Z" fill="none" stroke="#FFF" stroke-opacity="0.3" stroke-width="3"/>
+          <path d="M34 70 V30 H43 L57 54 V30 H66 V70 H57 L43 46 V70 Z" transform="translate(0,1.5)" fill="#FFDB80" fill-opacity="0.55"/>
+          <path d="M34 70 V30 H43 L57 54 V30 H66 V70 H57 L43 46 V70 Z" fill="url(#g-carve)"/>
+        </symbol>
+
+        <!-- R3e: flat-top cell + frosted continuous-ribbon N -->
+        <linearGradient id="g-frost2" gradientUnits="userSpaceOnUse" x1="50" y1="30" x2="50" y2="70">
+          <stop offset="0" stop-color="#FFF" stop-opacity="0.98"/><stop offset="1" stop-color="#FFF" stop-opacity="0.5"/>
+        </linearGradient>
+        <linearGradient id="g-foldw1" gradientUnits="userSpaceOnUse" x1="36" y1="38" x2="46" y2="48">
+          <stop offset="0" stop-color="#B45200" stop-opacity="0.5"/><stop offset="1" stop-color="#B45200" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="g-foldw2" gradientUnits="userSpaceOnUse" x1="64" y1="62" x2="54" y2="52">
+          <stop offset="0" stop-color="#B45200" stop-opacity="0.5"/><stop offset="1" stop-color="#B45200" stop-opacity="0"/>
+        </linearGradient>
+        <symbol id="r3e" viewBox="0 0 100 100">
+          <path d="M27 8 H73 L96 50 L73 92 H27 L4 50 Z" fill="url(#g-hex)"/>
+          <path d="M27 8 H73 L96 50 L73 92 H27 L4 50 Z" fill="url(#g-hexsheen)"/>
+          <path d="M36 70 L36 38 L64 62 L64 30" fill="none" stroke="url(#g-frost2)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M36 38 L46 48" fill="none" stroke="url(#g-foldw1)" stroke-width="12" stroke-linecap="round"/>
+          <path d="M64 62 L54 52" fill="none" stroke="url(#g-foldw2)" stroke-width="12" stroke-linecap="round"/>
+        </symbol>
+      </defs>
+    </svg>
+
+    <div id="rows"></div>
+
+    <script>
+      const CONCEPTS = [
+        ["r3a", "R3a · One ribbon, soft", "Single continuous path: one silhouette, one gradient sweep, shaded creases at the folds."],
+        ["r3b", "R3b · One ribbon, creased", "Same path with bevel-cut folds and flat ribbon ends. The most 'folded' of the two."],
+        ["r3c", "R3c · Cell + frosted N", "Flat-top comb cell; the N is frosted white, fading translucent so the amber glows through."],
+        ["r3d", "R3d · Cell + carved N", "Double-wall cell with the N pressed into the comb: deep amber inset with a light bottom edge."],
+        ["r3e", "R3e · Cell + frosted ribbon", "The continuous ribbon N, frosted, folded inside the cell."],
+      ];
+      const SIZES = [128, 48, 24, 16];
+      const rows = document.getElementById("rows");
+      for (const [id, name, note] of CONCEPTS) {
+        const mark = (s) => '<svg class="mark" width="' + s + '" height="' + s + '"><use href="#' + id + '"/></svg>';
+        rows.insertAdjacentHTML("beforeend",
+          '<div class="row"><div class="label">' + name + '<small>' + note + '</small></div>' +
+          '<div class="sizes">' +
+          SIZES.map((s) => '<div class="cell">' + mark(s) + '<span>' + s + '</span></div>').join("") +
+          '<div class="cell"><div class="lockup">' + mark(32) + '<b>Nectar</b></div><span>header lockup</span></div>' +
+          '<div class="cell"><div class="light">' + mark(28) + mark(16) + '</div><span>on light</span></div>' +
+          '</div></div>');
+      }
+    </script>
+  </body>
+</html>
