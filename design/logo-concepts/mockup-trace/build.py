@@ -338,17 +338,20 @@ outer = ' '.join([
 ])
 
 # ---------- seam paths (as dense fitted polylines -> cubics) ----------
-def seam_curve(name, x0, x1, rev=False):
-    pts = [(x, seameval(name, x)) for x in [x0 + (x1-x0)*i/40 for i in range(41)]]
+def seam_curve(name, x0, x1, rev=False, nseg=4):
+    pts = [(x, seameval(name, x)) for x in [x0 + (x1-x0)*i/64 for i in range(65)]]
     if rev: pts = pts[::-1]
-    # fit two cubics
-    mid = len(pts)//2
-    tA = unit((pts[1][0]-pts[0][0], pts[1][1]-pts[0][1]))
-    tM = unit((pts[mid+1][0]-pts[mid-1][0], pts[mid+1][1]-pts[mid-1][1]))
-    tB = unit((pts[-1][0]-pts[-2][0], pts[-1][1]-pts[-2][1]))
-    P1a, P2a, _ = fit_cubic(pts[:mid+1], tA, tM)
-    P1b, P2b, _ = fit_cubic(pts[mid:], tM, tB)
-    return pts[0], C(P1a, P2a, pts[mid]) + ' ' + C(P1b, P2b, pts[-1])
+    n = len(pts)
+    cuts = [round(i*(n-1)/nseg) for i in range(nseg+1)]
+    def tang(i):
+        a = pts[max(0, i-1)]; b = pts[min(n-1, i+1)]
+        return unit((b[0]-a[0], b[1]-a[1]))
+    d = []
+    for s in range(nseg):
+        seg = pts[cuts[s]:cuts[s+1]+1]
+        P1, P2, _ = fit_cubic(seg, tang(cuts[s]), tang(cuts[s+1]))
+        d.append(C(P1, P2, seg[-1]))
+    return pts[0], ' '.join(d)
 
 SEAM_RANGE = {'A': (313, 414), 'B': (313, 414), 'S1': (608, 710), 'S2': (608, 710)}
 def seameval(name, x):
@@ -428,17 +431,10 @@ for xx in range(700, 606, -1):
         xcross = xx; break
 print(f"ridge: {len(ridge_pts)} pts, meets seam1 at x={xcross}")
 
-samples = {'face': [], 'band1': [], 'band2': [], 'stemtop': [], 'leafL': [], 'leafU': [], 'hook': []}
+samples = {'face': [], 'band1': [], 'band2': [], 'stemtop': [], 'leaf': [], 'hook': []}
 for y in range(288, 716, 2):
     for x in range(306, 716, 2):
         r = region_of(x, y)
-        if r == 'leaf':
-            if x > xcross + 4 and y < seameval('R', x) - 3:
-                r = 'leafU'
-            elif abs(y - seameval('R', x)) <= 3 and x > xcross + 4:
-                r = None
-            else:
-                r = 'leafL'
         if r: samples[r].append((x, y, px(x, y)))
 
 def _binned(projs, cols, nbins):
@@ -476,6 +472,15 @@ def fit_gradient(sam, nbins=12):
             sse, pmin, pmax, _ = _binned([math.hypot(x-ccx, y-ccy) for x, y, _ in sub], cols, nbins)
             if sse < best[0]:
                 best = (sse, ('rad', ccx, ccy))
+    if best[1][0] == 'rad':
+        bx, by = best[1][1], best[1][2]
+        for ccx in range(bx-20, bx+21, 5):
+            for ccy in range(by-20, by+21, 5):
+                if x0-20 < ccx < x1+20 and y0-20 < ccy < y1+20:
+                    continue
+                sse, pmin, pmax, _ = _binned([math.hypot(x-ccx, y-ccy) for x, y, _ in sub], cols, nbins)
+                if sse < best[0]:
+                    best = (sse, ('rad', ccx, ccy))
     _, spec = best
     # final stops from ALL samples
     cols = [c for _, _, c in sam]
@@ -590,6 +595,90 @@ for name, sam in samples.items():
     grads[name] = g
     print(f"gradient {name}: {len(sam)} px, {g[0]} {g[1:3] if g[0]=='rad' else g[1]}, rms {rms:.1f}")
 
+# --- local corrective patches for the leaf (two smooth residual lobes) ---
+def spec_proj(spec, x, y):
+    if spec[0] == 'lin':
+        th = math.radians(spec[1])
+        return x*math.cos(th) + y*math.sin(th)
+    return math.hypot(x-spec[1], y-spec[2])
+
+def spec_eval(g, x, y):
+    kind_spec, pmin, pmax, means = g[:-3], g[-3], g[-2], g[-1]
+    p = (spec_proj(g, x, y) - pmin) / (pmax - pmin or 1)
+    return profile_eval(p, means)
+
+def fit_leaf_patches(sam, g, alpha=0.5, R=75, nb=6):
+    pred = [spec_eval(g, x, y) for x, y, _ in sam]
+    res = [(c[0]-p[0], c[1]-p[1], c[2]-p[2]) for (_, _, c), p in zip(sam, pred)]
+    def rms(rs):
+        return math.sqrt(sum(r[0]**2+r[1]**2+r[2]**2 for r in rs)/max(1,len(rs))/3)
+    patches = []
+    cur = rms(res)
+    for _ in range(4):
+        # candidate centers: extreme mean-residual cells (top few, spatially distinct)
+        cells = {}
+        for (x, y, _), r in zip(sam, res):
+            k = (x//24, y//24)
+            s = cells.setdefault(k, [0.0, 0])
+            s[0] += r[1]; s[1] += 1
+        ranked = sorted((k for k in cells if cells[k][1] > 8),
+                        key=lambda k: -abs(cells[k][0]/cells[k][1]))
+        cands = []
+        for k in ranked:
+            c = (k[0]*24+12, k[1]*24+12)
+            if all(math.hypot(c[0]-e[0], c[1]-e[1]) > 40 for e in cands):
+                cands.append(c)
+            if len(cands) == 4: break
+        placed = False
+        for ccx, ccy in cands:
+            bins = [[0.0]*6 + [0] for _ in range(nb)]   # res rgb, pred rgb, count
+            for (x, y, _), r, p in zip(sam, res, pred):
+                d = math.hypot(x-ccx, y-ccy)
+                if d >= R: continue
+                b = int(d/R*nb)
+                for i in range(3):
+                    bins[b][i] += r[i]; bins[b][3+i] += p[i]
+                bins[b][6] += 1
+            stops = []
+            for b in bins:
+                if not b[6]:
+                    stops.append(None); continue
+                stops.append(tuple(max(0, min(255, b[3+i]/b[6] + (b[i]/b[6])/alpha)) for i in range(3)))
+            def patch_shift(x, y, p):
+                d = math.hypot(x-ccx, y-ccy)
+                if d >= R: return p
+                o = profile_eval(d/R, stops)
+                fade = 1.0 if d < R*(nb-1)/nb else (R-d)/(R/nb)   # last bin fades out
+                a = alpha * fade
+                return tuple((1-a)*p[i] + a*o[i] for i in range(3))
+            newpred = [patch_shift(x, y, p) for (x, y, _), p in zip(sam, pred)]
+            newres = [(c[0]-p[0], c[1]-p[1], c[2]-p[2]) for (_, _, c), p in zip(sam, newpred)]
+            nr = rms(newres)
+            if nr < cur * 0.985:
+                patches.append((ccx, ccy, R, stops, alpha))
+                pred, res, cur = newpred, newres, nr
+                placed = True
+                break
+        if not placed:
+            break
+    return patches, cur
+
+leaf_patches, leaf_rms2 = fit_leaf_patches(samples['leaf'], grads['leaf'])
+print(f"leaf patches: {[(p[0],p[1]) for p in leaf_patches]}, rms -> {leaf_rms2:.1f}")
+
+def patch_def(gid, patch):
+    ccx, ccy, R, stops, alpha = patch
+    n = len(stops)
+    parts = []
+    for i, m in enumerate(stops):
+        if m is None: continue
+        off = (i+0.5)/n
+        a = alpha if i < n-1 else 0.0   # fade the outer edge to nothing
+        parts.append(f'<stop offset="{off:.3f}" stop-color="rgb({m[0]:.0f},{m[1]:.0f},{m[2]:.0f})" stop-opacity="{a}"/>')
+    parts.append(f'<stop offset="1" stop-color="rgb(255,255,255)" stop-opacity="0"/>')
+    return (f'<radialGradient id="{gid}" gradientUnits="userSpaceOnUse" '
+            f'cx="{ccx}" cy="{ccy}" r="{R}">{"".join(parts)}</radialGradient>')
+
 def gradient_def(gid, g):
     """g = ('lin', deg, pmin, pmax, means) or ('rad', cx, cy, pmin, pmax, means)"""
     kind = g[0]
@@ -611,19 +700,13 @@ def gradient_def(gid, g):
     return (f'<radialGradient id="{gid}" gradientUnits="userSpaceOnUse" '
             f'cx="{ccx}" cy="{ccy}" r="{pmax:.1f}">{stops}</radialGradient>')
 
-# leafU: between seam1 and the ridge, from xcross rightward (painted over leafL)
-_, s1_part = seam_curve('S1', xcross, 716)
-_, ridge_rev = seam_curve('R', 716, xcross)
-leafU = (f"M {fmt(xcross, seameval('S1', xcross))} {s1_part} "
-         f"L {fmt(716, seameval('R', 716))} {ridge_rev} Z")
-
 # hook: right-stem/diagonal area below seam2 (fold shadow, painted over face)
 _, s2_fwd = seam_curve('S2', XLS-1, 716)
 hookp = (f"M {fmt(XLS-1, y2_left)} {s2_fwd} "
          f"L {fmt(716, 725)} L {fmt(XLS-1, 725)} Z")
 
 region_paths = [('face', outer), ('hook', hookp), ('band1', band1), ('band2', band2),
-                ('stemtop', stemtop), ('leafL', leaf), ('leafU', leafU)]
+                ('stemtop', stemtop), ('leaf', leaf)]
 
 # --- fold crease strokes: the original paints a ~3px darker line along the fold seams ---
 def crease(name, x0, x1, nb=10):
@@ -669,6 +752,11 @@ for name, d in region_paths:
     gid = 'g_' + name
     defs.append(gradient_def(gid, grads[name]))
     body.append(f'<path d="{d}" fill="url(#{gid})"/>')
+    if name == 'leaf':
+        for k, patch in enumerate(leaf_patches):
+            pid = f'p_leaf{k}'
+            defs.append(patch_def(pid, patch))
+            body.append(f'<path d="{d}" fill="url(#{pid})"/>')
 defs.extend(crease_defs)
 body.extend(crease_paths)
 
