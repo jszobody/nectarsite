@@ -27,6 +27,14 @@
   --color-ink-950: #12181f;
 }
 
+/* Honey-gradient CTA fill, echoing the mark's top-lit gradient. */
+@utility btn-honey {
+  background-image: linear-gradient(180deg, #ff9524, #ef6606);
+  &:hover {
+    background-image: linear-gradient(180deg, #ffa63d, #ff7514);
+  }
+}
+
 /* Faint drafting grid, one step subtler than a blueprint. */
 @utility drafting-grid {
   background-image:
