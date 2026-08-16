@@ -4,18 +4,17 @@ date: "2026-08-14"
 headline: "Data Rules"
 feature: true
 summary:
-  - "Your house style, applied to every sheet number and title at once, live in the table"
+  - "Manual corrections and style preferences, applied to every sheet number and title at once, live in the table"
   - "One find & replace fixes a set-wide OCR misread; a pin spares the one sheet it would break"
-  - "Plus a rebuilt app icon for macOS and Windows, and a much fuller app menu"
 ---
 
-Every drawing set arrives in somebody else's house style. One consultant sets every title in full capitals. The next capitalizes the first word and calls it a day. A title block that prints `S · 10` comes through the scan as `S - 10`, and your file names are supposed to say `S 10`.
+Every drawing set arrives needing the same kind of cleanup. One consultant sets every title in full capitals. The next capitalizes the first word and calls it a day. A title block that prints `S · 10` comes through the scan as `S - 10`, when your file names need to read `S 10`.
 
-Some of what lands in your table is not a style problem at all. OCR gets most sheets right, and then it reads a tight `S` as an `8`. The lettering that fooled it on one sheet fools it on the next, and the one after that, so a single misread runs the whole length of the set.
+Then there is the data that is simply wrong. OCR gets most sheets right, and then it reads a tight `S` as an `8`. The lettering that fooled it on one sheet fools it on the next, and the one after that, so a single misread runs the whole length of the set.
 
-Either way, the repair has looked the same for years: fix a cell, arrow down, fix the next one. Ninety-five rows, one at a time.
+Either way you are correcting data, and that repair has looked the same for years: fix a cell, arrow down, fix the next one. Ninety-five rows, one at a time.
 
-Data Rules does the whole set at once. You will find it in the toolbar; click **Data Rules** and a panel opens beside the file table. From then on the table itself is the live preview: change a setting and you watch every row respond. Set the shape you want once and every file in the session follows it, including the ones you add next month.
+Data Rules does the whole set at once. You will find it in the toolbar; click **Data Rules** and a panel opens beside the file table. From then on the table itself is the live preview: change a setting and you watch every row respond. Set it once and every file in the session follows, including the ones you add next month.
 
 ## Case that knows the trade
 
@@ -54,9 +53,3 @@ While the panel is open, any cell a rule has changed wears a dotted underline, a
 Underneath all of this sits one decision we want you to know about: Nectar stores the raw extracted value, permanently, and applies your rules on the way out. To the table, to the output name, to the rename, to the export. The stored value itself never changes.
 
 That is why you can relax. Flip the master switch off and every file instantly shows exactly what was read off the sheet. Re-extraction cannot undo your rules. Files added later pick the rules up the moment they land, with no re-apply button to forget, because nothing is ever applied to the stored data at all. And if you ever wonder which copy is the real one: there has only ever been one.
-
-## Also in 0.6.0
-
-The app icon got a proper rebuild around the honey ribbon-N, with separate crops for macOS and Windows so it looks at home on each rather than like a guest from the other platform.
-
-And the app menu finally grew up. Account & License, Check for updates, a theme toggle, and a keyboard shortcut sheet are all in there now. Three of them had no entry point anywhere in the app before.
