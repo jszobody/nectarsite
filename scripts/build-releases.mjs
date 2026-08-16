@@ -1,0 +1,36 @@
+#!/usr/bin/env node
+// Generates the release artifacts consumed by `vite build`:
+//
+//   releases/<version>/index.html        ← a Vite HTML entry (see vite.config.js)
+//   releases/<version>/embed/index.html  ← ditto, chrome-free, framed by the app
+//   public/whats-new.json                ← copied verbatim into dist/
+//
+// All three are generated, gitignored, and rewritten from scratch on every run.
+import { mkdirSync, writeFileSync, rmSync } from 'node:fs'
+import { join, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { loadReleases, whatsNewPayload } from './releases.mjs'
+import { fullPage } from './templates.mjs'
+
+const root = join(dirname(fileURLToPath(import.meta.url)), '..')
+const releases = loadReleases(join(root, 'content/releases'))
+
+// Rebuild from scratch so a deleted or renamed content file can't leave a stale
+// page published.
+rmSync(join(root, 'releases'), { recursive: true, force: true })
+
+for (const release of releases) {
+  const dir = join(root, 'releases', release.version)
+  mkdirSync(dir, { recursive: true })
+  writeFileSync(join(dir, 'index.html'), fullPage(release))
+}
+
+mkdirSync(join(root, 'public'), { recursive: true })
+writeFileSync(
+  join(root, 'public/whats-new.json'),
+  JSON.stringify(whatsNewPayload(releases), null, 2) + '\n',
+)
+
+console.log(
+  `[releases] generated ${releases.length} release page(s): ${releases.map((r) => r.version).join(', ')}`,
+)

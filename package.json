@@ -5,7 +5,9 @@
   "type": "module",
   "description": "Marketing site for Nectar (nectardocs.com)",
   "scripts": {
+    "predev": "node scripts/build-releases.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/build-releases.mjs",
     "build": "vite build",
     "preview": "vite preview",
     "test": "node --test scripts/*.test.mjs"
