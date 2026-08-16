@@ -102,3 +102,87 @@ ${release.bodyHtml}
 </html>
 `
 }
+
+// The page the desktop app frames. No site chrome, no nav, no footer — the
+// dialog supplies all of that. Deliberately standalone: it carries its own
+// palette (nectardocs.com is dark-only, the app is not) and its own CSS, so it
+// does not depend on the marketing site's Tailwind build and cannot be broken by
+// a redesign of it.
+//
+// Theme arrives as ?theme=light|dark, read at parse time. The app's dark mode is
+// independent of the OS setting, so prefers-color-scheme would be wrong whenever
+// the two disagree.
+export function embedPage(release) {
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Nectar ${esc(release.version)} · ${esc(release.headline)}</title>
+    <meta name="robots" content="noindex" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@300..700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --font-mono: "Geist Mono", ui-monospace, monospace;
+        --notes-bg: #ffffff;
+        --notes-text: #3d3d3d;
+        --notes-heading: #1a1a1a;
+        --notes-muted: #707070;
+        --notes-accent: #b35c00;
+        --notes-rule: rgb(0 0 0 / 0.1);
+        --notes-code-bg: rgb(0 0 0 / 0.05);
+      }
+      html.theme-dark {
+        --notes-bg: #1f1f1f;
+        --notes-text: #d6d6d6;
+        --notes-heading: #ffffff;
+        --notes-muted: #9a9a9a;
+        --notes-accent: #ffa31f;
+        --notes-rule: rgb(255 255 255 / 0.1);
+        --notes-code-bg: rgb(255 255 255 / 0.08);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        padding: 22px 26px 32px;
+        background: var(--notes-bg);
+        color: var(--notes-text);
+        font-family: "Geist", ui-sans-serif, system-ui, sans-serif;
+        font-size: 14px;
+        -webkit-font-smoothing: antialiased;
+      }
+      .eyebrow { margin: 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--notes-muted); }
+      h1 { margin: 8px 0 0; font-size: 26px; font-weight: 600; letter-spacing: -0.02em; color: var(--notes-heading); }
+      .summary { margin: 18px 0 0; padding: 0 0 0 16px; border-left: 2px solid var(--notes-accent); list-style: none; }
+      .summary li { margin-bottom: 6px; color: var(--notes-muted); line-height: 1.6; }
+      .prose-notes { margin-top: 30px; }
+${PROSE}
+    </style>
+  </head>
+  <body>
+    <p class="eyebrow">Version ${esc(release.version)} · ${esc(prettyDate(release.date))}</p>
+    <h1>${esc(release.headline)}</h1>
+    <ul class="summary">
+      ${release.summary.map((s) => `<li>${esc(s)}</li>`).join('\n      ')}
+    </ul>
+    <div class="prose-notes">
+${release.bodyHtml}
+    </div>
+    <script>
+      // Theme from the query string (see the comment above).
+      if (new URLSearchParams(location.search).get('theme') === 'dark') {
+        document.documentElement.classList.add('theme-dark')
+      }
+      // Without this a link inside the frame navigates the whole page into a
+      // narrow panel with no way back.
+      for (const a of document.querySelectorAll('a[href]')) {
+        a.target = '_blank'
+        a.rel = 'noopener noreferrer'
+      }
+    </script>
+  </body>
+</html>
+`
+}

@@ -26,6 +26,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      # Runs after the build because the output assertions read dist/. Malformed
+      # release frontmatter fails the deploy here rather than publishing a
+      # whats-new.json the desktop app silently discards.
+      - run: npm test
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

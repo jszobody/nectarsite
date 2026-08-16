@@ -10,7 +10,7 @@ import { mkdirSync, writeFileSync, rmSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadReleases, whatsNewPayload } from './releases.mjs'
-import { fullPage } from './templates.mjs'
+import { fullPage, embedPage } from './templates.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const releases = loadReleases(join(root, 'content/releases'))
@@ -21,8 +21,9 @@ rmSync(join(root, 'releases'), { recursive: true, force: true })
 
 for (const release of releases) {
   const dir = join(root, 'releases', release.version)
-  mkdirSync(dir, { recursive: true })
+  mkdirSync(join(dir, 'embed'), { recursive: true })
   writeFileSync(join(dir, 'index.html'), fullPage(release))
+  writeFileSync(join(dir, 'embed/index.html'), embedPage(release))
 }
 
 mkdirSync(join(root, 'public'), { recursive: true })
