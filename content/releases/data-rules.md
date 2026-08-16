@@ -11,14 +11,18 @@ summary:
 
 Every set of drawings turns up with somebody else's conventions baked into it.
 One consultant sends every title in capitals. The next sends them in sentence
-case. A sheet that was printed `S · 10` comes back from OCR as `S - 10`, which is
-honestly what the scan says.
+case. A sheet printed `S · 10` comes back as `S - 10`, which is roughly what the
+scan says.
 
-Nectar read all of those correctly. They just aren't in your house style, and
-retyping them one row at a time is the job you wanted to stop doing.
+Some of it isn't house style at all. OCR will sometimes read a tight `S` as an
+`8`, and when a set is lettered the same way throughout, that misread tends to
+repeat, so you end up making the same correction on sheet after sheet.
 
-Data Rules applies your formatting to the whole set at once. Open the rail from
-Data Rules in the toolbar, set the shape you want, and every file in the session
+Either way you are retyping, one row at a time, and that is the job you wanted to
+stop doing.
+
+Data Rules applies the fix to the whole set at once. Open the rail from Data
+Rules in the toolbar, set the shape you want, and every file in the session
 follows it, including the ones you add tomorrow.
 
 ## What you can set
@@ -26,8 +30,10 @@ follows it, including the ones you add tomorrow.
 Case, first: upper, lower, title or sentence, picked separately for sheet number
 and sheet title. Then the separator, which normalizes the punctuation inside a
 sheet number, so `A 101`, `A.101` and `A - 101` all come out however you chose.
-And for the genuinely one-off stuff, find and replace takes an optional regex and
-can be scoped to the number, the title, or both.
+
+Find and replace covers everything else, including the misreads. If this set came
+back with `8` everywhere the drawings say `S`, one rule puts them all back. It
+takes an optional regex and can be scoped to the number, the title, or both.
 
 ## Nothing gets overwritten
 
@@ -41,8 +47,9 @@ them up on their own. There is no re-apply button to forget about.
 
 ## When a rule is right about the set and wrong about one sheet
 
-This will happen. A rule fixes ninety-four sheets and mangles the ninety-fifth.
-Editing that one value by hand gets you nowhere, because the rule fires again on
+This will happen, and that `8` to `S` rule is exactly how. It fixes ninety-four
+sheets, then reaches the one whose number really does contain an 8 and mangles
+it. Editing that value by hand gets you nowhere, because the rule fires again on
 whatever you type.
 
 So you can pin a single field on a single file. The pin tells the lens to look
