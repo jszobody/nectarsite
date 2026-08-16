@@ -4,7 +4,7 @@ date: "2026-08-14"
 headline: "Data Rules"
 feature: true
 summary:
-  - "Manual corrections and style preferences, applied to every sheet number and title at once, live in the table"
+  - "Apply your corrections and style preferences to every sheet number and title at once, and watch the table follow"
   - "One find & replace fixes a set-wide OCR misread; a pin spares the one sheet it would break"
 ---
 
@@ -30,7 +30,7 @@ It is picky on purpose. The rule only fires on values shaped like a real sheet n
 
 ## Find and replace, for everything else
 
-The third rule is a list of find-and-replace entries, run top to bottom. Each one is scoped to `Sheet Number`, `Sheet Title`, or `Both fields`, and matches plain text by default, with a per-entry Regex toggle for the occasions plain text cannot reach. `+ Add` grows the list; the trash icon prunes it.
+The third rule is a list of find-and-replace entries. Nectar runs them top to bottom. Scope each one to `Sheet Number`, `Sheet Title`, or `Both fields`; it matches plain text by default, and a per-entry Regex toggle covers the occasions plain text cannot reach. `+ Add` grows the list; the trash icon prunes it.
 
 This is the tool for that `8`. A mistake this consistent is exactly the kind a replacement can undo: one entry swapping `8` for `S` puts the whole set back the way the drawings actually read. A misread that shows up once, on one sheet, is still a hand edit. The ones that repeat stop being your job.
 
