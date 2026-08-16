@@ -22,21 +22,38 @@ test('every release matches the contract the app parses', () => {
     assert.ok(r.headline.length > 0, 'headline')
     assert.equal(typeof r.feature, 'boolean', 'feature')
     assert.ok(Array.isArray(r.summary) && r.summary.length > 0, 'summary')
-    assert.match(r.url, /^https:\/\/nectardocs\.com\/releases\/.+\/$/, 'url')
-    assert.match(r.embedUrl, /^https:\/\/nectardocs\.com\/releases\/.+\/embed\/$/, 'embedUrl')
+    // Routed by topic, never by version. A /releases/<version>/ URL here means
+    // the slug routing regressed.
+    assert.match(r.url, /^https:\/\/nectardocs\.com\/updates\/[a-z0-9-]+\/$/, 'url')
+    assert.match(r.embedUrl, /^https:\/\/nectardocs\.com\/updates\/[a-z0-9-]+\/embed\/$/, 'embedUrl')
     assert.equal('bodyHtml' in r, false, 'body must never enter the JSON')
+    assert.equal('slug' in r, false, 'slug must never enter the JSON')
   }
 })
 
-test('every release publishes both pages', () => {
+// Derived from the published url, so this checks the JSON and the emitted files
+// agree — the failure mode that leaves the app pointing at a 404.
+const slugOf = (r) => r.url.replace(/\/$/, '').split('/').pop()
+
+test('every update publishes both pages at its slug', () => {
   for (const r of payload.releases) {
-    assert.ok(existsSync(join(dist, 'releases', r.version, 'index.html')), `${r.version} full page`)
-    assert.ok(existsSync(join(dist, 'releases', r.version, 'embed/index.html')), `${r.version} embed page`)
+    const slug = slugOf(r)
+    assert.ok(existsSync(join(dist, 'updates', slug, 'index.html')), `${slug} full page`)
+    assert.ok(existsSync(join(dist, 'updates', slug, 'embed/index.html')), `${slug} embed page`)
   }
 })
 
 test('the embed page carries no site chrome', () => {
-  const html = readFileSync(join(dist, 'releases', payload.releases[0].version, 'embed/index.html'), 'utf8')
+  const html = readFileSync(join(dist, 'updates', slugOf(payload.releases[0]), 'embed/index.html'), 'utf8')
   assert.equal(html.includes('<header'), false)
   assert.equal(html.includes('<footer'), false)
+})
+
+test('the full page is canonical and the embed page defers to it', () => {
+  const slug = slugOf(payload.releases[0])
+  const full = readFileSync(join(dist, 'updates', slug, 'index.html'), 'utf8')
+  const embed = readFileSync(join(dist, 'updates', slug, 'embed/index.html'), 'utf8')
+  assert.ok(full.includes(`<link rel="canonical" href="${payload.releases[0].url}"`), 'full page canonical')
+  assert.ok(embed.includes(`<link rel="canonical" href="${payload.releases[0].url}"`), 'embed canonical')
+  assert.ok(embed.includes('name="robots" content="noindex"'), 'embed noindex')
 })

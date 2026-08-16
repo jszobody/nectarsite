@@ -1,9 +1,9 @@
 #!/usr/bin/env node
-// Generates the release artifacts consumed by `vite build`:
+// Generates the update artifacts consumed by `vite build`:
 //
-//   releases/<version>/index.html        ← a Vite HTML entry (see vite.config.js)
-//   releases/<version>/embed/index.html  ← ditto, chrome-free, framed by the app
-//   public/whats-new.json                ← copied verbatim into dist/
+//   updates/<slug>/index.html        ← a Vite HTML entry (see vite.config.js)
+//   updates/<slug>/embed/index.html  ← ditto, chrome-free, framed by the app
+//   public/whats-new.json            ← copied verbatim into dist/
 //
 // All three are generated, gitignored, and rewritten from scratch on every run.
 import { mkdirSync, writeFileSync, rmSync } from 'node:fs'
@@ -17,10 +17,10 @@ const releases = loadReleases(join(root, 'content/releases'))
 
 // Rebuild from scratch so a deleted or renamed content file can't leave a stale
 // page published.
-rmSync(join(root, 'releases'), { recursive: true, force: true })
+rmSync(join(root, 'updates'), { recursive: true, force: true })
 
 for (const release of releases) {
-  const dir = join(root, 'releases', release.version)
+  const dir = join(root, 'updates', release.slug)
   mkdirSync(join(dir, 'embed'), { recursive: true })
   writeFileSync(join(dir, 'index.html'), fullPage(release))
   writeFileSync(join(dir, 'embed/index.html'), embedPage(release))
@@ -33,5 +33,5 @@ writeFileSync(
 )
 
 console.log(
-  `[releases] generated ${releases.length} release page(s): ${releases.map((r) => r.version).join(', ')}`,
+  `[updates] generated ${releases.length} page(s): ${releases.map((r) => `${r.slug} (${r.version})`).join(', ')}`,
 )

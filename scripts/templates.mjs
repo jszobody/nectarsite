@@ -36,12 +36,16 @@ export function fullPage(release) {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/nectar-n.svg" />
-    <title>Nectar ${esc(release.version)} · ${esc(release.headline)}</title>
+    <!-- Topic first, product second, version nowhere: this page is meant to be
+         found by someone searching for what it does, not for a version number. -->
+    <title>${esc(release.headline)} · Nectar</title>
     <meta name="description" content="${esc(release.summary[0])}" />
+    <link rel="canonical" href="${esc(release.url)}" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content="Nectar ${esc(release.version)} · ${esc(release.headline)}" />
+    <meta property="og:title" content="${esc(release.headline)} · Nectar" />
     <meta property="og:description" content="${esc(release.summary[0])}" />
     <meta property="og:url" content="${esc(release.url)}" />
+    <meta property="article:published_time" content="${esc(release.date)}" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -72,8 +76,10 @@ ${PROSE}
       </header>
 
       <main class="mx-auto max-w-3xl px-6 py-16">
+        <!-- Date leads, version trails. The page is about the thing, not the
+             build it happened to land in. -->
         <p class="font-mono text-xs tracking-wide text-zinc-500 uppercase">
-          Version ${esc(release.version)} · ${esc(prettyDate(release.date))}
+          ${esc(prettyDate(release.date))} · Nectar ${esc(release.version)}
         </p>
         <h1 class="mt-3 text-4xl font-semibold tracking-tight text-balance text-white">${esc(release.headline)}</h1>
         <ul role="list" class="mt-6 flex flex-col gap-2 border-l-2 border-nectar-500 pl-5">
@@ -83,7 +89,7 @@ ${PROSE}
 ${release.bodyHtml}
         </div>
         <p class="mt-16 border-t border-white/10 pt-8 text-sm text-zinc-500">
-          Nectar updates itself — you'll get this automatically.
+          Nectar updates itself, so you'll get this automatically.
           <a href="/download.html" class="text-nectar-400 hover:text-nectar-300">Download</a> if you're setting up a new machine.
         </p>
       </main>
@@ -118,8 +124,11 @@ export function embedPage(release) {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Nectar ${esc(release.version)} · ${esc(release.headline)}</title>
+    <title>${esc(release.headline)} · Nectar</title>
+    <!-- noindex: this is the chrome-free twin of /updates/<slug>/, and two URLs
+         serving the same prose is exactly what a canonical is for. -->
     <meta name="robots" content="noindex" />
+    <link rel="canonical" href="${esc(release.url)}" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@300..700&display=swap" rel="stylesheet" />
@@ -162,7 +171,7 @@ ${PROSE}
     </style>
   </head>
   <body>
-    <p class="eyebrow">Version ${esc(release.version)} · ${esc(prettyDate(release.date))}</p>
+    <p class="eyebrow">${esc(prettyDate(release.date))} · Nectar ${esc(release.version)}</p>
     <h1>${esc(release.headline)}</h1>
     <ul class="summary">
       ${release.summary.map((s) => `<li>${esc(s)}</li>`).join('\n      ')}
