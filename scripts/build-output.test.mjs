@@ -49,6 +49,24 @@ test('the embed page carries no site chrome', () => {
   assert.equal(html.includes('<footer'), false)
 })
 
+// The hub is the whole reason these pages aren't orphans reachable only by email.
+test('the index links to every update, and every update links back', () => {
+  const index = readFileSync(join(dist, 'updates/index.html'), 'utf8')
+  for (const r of payload.releases) {
+    const path = new URL(r.url).pathname
+    assert.ok(index.includes(`href="${path}"`), `index links to ${path}`)
+    assert.ok(index.includes(r.headline), `index shows the ${slugOf(r)} headline`)
+    const page = readFileSync(join(dist, 'updates', slugOf(r), 'index.html'), 'utf8')
+    assert.ok(page.includes('href="/updates/"'), `${slugOf(r)} links back to the index`)
+  }
+})
+
+test('the index is canonical and indexable', () => {
+  const index = readFileSync(join(dist, 'updates/index.html'), 'utf8')
+  assert.ok(index.includes('<link rel="canonical" href="https://nectardocs.com/updates/"'), 'canonical')
+  assert.equal(index.includes('content="noindex"'), false, 'must not be noindex')
+})
+
 test('the full page is canonical and the embed page defers to it', () => {
   const slug = slugOf(payload.releases[0])
   const full = readFileSync(join(dist, 'updates', slug, 'index.html'), 'utf8')

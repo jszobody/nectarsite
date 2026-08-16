@@ -1,5 +1,8 @@
-// HTML for the two generated page types. The head/header/footer markup mirrors
-// index.html so a release page looks like the rest of nectardocs.com.
+// HTML for the three generated page types: an update, the index of them, and the
+// chrome-free embed the desktop app frames. The head/header/footer markup mirrors
+// index.html so these look like the rest of nectardocs.com.
+import { SITE_ORIGIN } from './releases.mjs'
+
 const esc = (s) =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;')
 
@@ -28,6 +31,31 @@ const PROSE = `
       .prose-notes img, .prose-notes video { display: block; width: 100%; height: auto; margin: 1.75rem 0; border-radius: 10px; border: 1px solid var(--notes-rule); }
       .prose-notes hr { margin: 2rem 0; border: 0; border-top: 1px solid var(--notes-rule); }
 `
+
+// Shared by the two full-width pages (an update, and the index of them) so the
+// site chrome can't drift between them. The embed page deliberately has none.
+const HEADER = `      <header class="sticky top-0 z-50 border-b border-white/10 bg-ink-950/80 backdrop-blur">
+        <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
+          <a href="/" aria-label="Homepage" class="flex items-center gap-2.5">
+            <img src="/nectar-n.svg" alt="" class="h-10 w-auto shrink-0" />
+            <span class="text-lg font-semibold tracking-tight text-white">Nectar</span>
+          </a>
+          <nav class="flex items-center gap-1 text-sm">
+            <a href="/updates/" class="rounded-md px-3 py-2 font-medium text-zinc-400 hover:text-white">Updates</a>
+            <a href="/download.html" class="rounded-md px-3 py-2 font-medium text-zinc-400 hover:text-white">Download</a>
+          </nav>
+        </div>
+      </header>`
+
+const FOOTER = `      <footer class="border-t border-white/10">
+        <div class="mx-auto max-w-6xl px-6 py-10">
+          <a href="/" aria-label="Homepage" class="inline-flex items-center gap-2.5">
+            <img src="/nectar-n.svg" alt="" class="h-6 w-auto shrink-0" />
+            <span class="text-base font-semibold tracking-tight text-white">Nectar</span>
+          </a>
+          <p class="mt-6 text-sm text-zinc-500">© 2026 Signature Tech Studio, Inc.</p>
+        </div>
+      </footer>`
 
 export function fullPage(release) {
   return `<!doctype html>
@@ -63,17 +91,7 @@ ${PROSE}
   </head>
   <body class="min-h-dvh bg-ink-950 font-sans text-zinc-300 antialiased">
     <div class="isolate">
-      <header class="sticky top-0 z-50 border-b border-white/10 bg-ink-950/80 backdrop-blur">
-        <div class="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-3">
-          <a href="/" aria-label="Homepage" class="flex items-center gap-2.5">
-            <img src="/nectar-n.svg" alt="" class="h-10 w-auto shrink-0" />
-            <span class="text-lg font-semibold tracking-tight text-white">Nectar</span>
-          </a>
-          <nav class="flex items-center gap-1 text-sm">
-            <a href="/download.html" class="rounded-md px-3 py-2 font-medium text-zinc-400 hover:text-white">Download</a>
-          </nav>
-        </div>
-      </header>
+${HEADER}
 
       <main class="mx-auto max-w-3xl px-6 py-16">
         <!-- Date leads, version trails. The page is about the thing, not the
@@ -92,17 +110,76 @@ ${release.bodyHtml}
           Nectar updates itself, so you'll get this automatically.
           <a href="/download.html" class="text-nectar-400 hover:text-nectar-300">Download</a> if you're setting up a new machine.
         </p>
+        <p class="mt-4 text-sm text-zinc-500">
+          <a href="/updates/" class="text-nectar-400 hover:text-nectar-300">All updates</a>
+        </p>
       </main>
 
-      <footer class="border-t border-white/10">
-        <div class="mx-auto max-w-6xl px-6 py-10">
-          <a href="/" aria-label="Homepage" class="inline-flex items-center gap-2.5">
-            <img src="/nectar-n.svg" alt="" class="h-6 w-auto shrink-0" />
-            <span class="text-base font-semibold tracking-tight text-white">Nectar</span>
-          </a>
-          <p class="mt-6 text-sm text-zinc-500">© 2026 Signature Tech Studio, Inc.</p>
-        </div>
-      </footer>
+${FOOTER}
+    </div>
+  </body>
+</html>
+`
+}
+
+// The hub at /updates/. Every announcement links back here and this links out to
+// every announcement, which is the point: one page for search engines to find and
+// for a reader to browse, instead of a set of orphans reachable only by email.
+export function indexPage(releases) {
+  const url = `${SITE_ORIGIN}/updates/`
+  const description = 'New features and improvements in Nectar, the automatic title-block extraction app for construction drawings.'
+  return `<!doctype html>
+<html lang="en" class="scheme-only-dark">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/nectar-n.svg" />
+    <title>Updates · Nectar</title>
+    <meta name="description" content="${esc(description)}" />
+    <link rel="canonical" href="${esc(url)}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Updates · Nectar" />
+    <meta property="og:description" content="${esc(description)}" />
+    <meta property="og:url" content="${esc(url)}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Geist:wght@300..700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/src/main.css" />
+  </head>
+  <body class="min-h-dvh bg-ink-950 font-sans text-zinc-300 antialiased">
+    <div class="isolate">
+${HEADER}
+
+      <main class="mx-auto max-w-3xl px-6 py-16">
+        <h1 class="text-4xl font-semibold tracking-tight text-balance text-white">Updates</h1>
+        <p class="mt-4 max-w-[55ch] text-base/7 text-zinc-400">
+          What's new in Nectar. The app updates itself, so you already have everything below.
+        </p>
+
+        <ul role="list" class="mt-14 flex flex-col">
+          ${releases
+            .map(
+              (r) => `<li class="border-t border-white/10 py-8">
+            <p class="font-mono text-xs tracking-wide text-zinc-500 uppercase">
+              ${esc(prettyDate(r.date))} · Nectar ${esc(r.version)}
+            </p>
+            <h2 class="mt-2 text-2xl font-semibold tracking-tight text-white">
+              <a href="${esc(new URL(r.url).pathname)}" class="hover:text-nectar-300">${esc(r.headline)}</a>
+            </h2>
+            <ul role="list" class="mt-4 flex flex-col gap-2 border-l-2 border-nectar-500 pl-5">
+              ${r.summary.map((s) => `<li class="text-base/7 text-zinc-400">${esc(s)}</li>`).join('\n              ')}
+            </ul>
+            <p class="mt-5">
+              <a href="${esc(new URL(r.url).pathname)}" class="text-sm font-medium text-nectar-400 hover:text-nectar-300">Read more</a>
+            </p>
+          </li>`,
+            )
+            .join('\n          ')}
+        </ul>
+      </main>
+
+${FOOTER}
     </div>
   </body>
 </html>

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Generates the update artifacts consumed by `vite build`:
 //
+//   updates/index.html               ← the hub, linking every announcement
 //   updates/<slug>/index.html        ← a Vite HTML entry (see vite.config.js)
 //   updates/<slug>/embed/index.html  ← ditto, chrome-free, framed by the app
 //   public/whats-new.json            ← copied verbatim into dist/
@@ -10,7 +11,7 @@ import { mkdirSync, writeFileSync, rmSync } from 'node:fs'
 import { join, dirname } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { loadReleases, whatsNewPayload } from './releases.mjs'
-import { fullPage, embedPage } from './templates.mjs'
+import { fullPage, embedPage, indexPage } from './templates.mjs'
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..')
 const releases = loadReleases(join(root, 'content/releases'))
@@ -18,6 +19,7 @@ const releases = loadReleases(join(root, 'content/releases'))
 // Rebuild from scratch so a deleted or renamed content file can't leave a stale
 // page published.
 rmSync(join(root, 'updates'), { recursive: true, force: true })
+mkdirSync(join(root, 'updates'), { recursive: true })
 
 for (const release of releases) {
   const dir = join(root, 'updates', release.slug)
@@ -25,6 +27,8 @@ for (const release of releases) {
   writeFileSync(join(dir, 'index.html'), fullPage(release))
   writeFileSync(join(dir, 'embed/index.html'), embedPage(release))
 }
+
+writeFileSync(join(root, 'updates/index.html'), indexPage(releases))
 
 mkdirSync(join(root, 'public'), { recursive: true })
 writeFileSync(
